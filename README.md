@@ -1,7 +1,7 @@
 # TIN PAN ALLEY: The NoMad Music Moguls
 
 <p align="center">
-  <img src="assets/box_cover.jpg" alt="Tin Pan Alley Box Cover" width="500"/>
+  <img src="assets/box_cover.png" alt="Tin Pan Alley Box Cover" width="500"/>
 </p>
 
 <p align="center">
