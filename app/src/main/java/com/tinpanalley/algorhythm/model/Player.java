@@ -6,16 +6,30 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.socket.WebSocketSession;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 public class Player {
 
     private final String id;
     private String name;
-    private int colorId; // Da 1 a 8 (corrisponde a --p1-color .. --p8-color)
+    private int colorId;
     private int beats = 3000;
     private int reputation = 0;
+    private int liveShowReputation = 0; // Per lo spareggio finale
+    private int clubsOwned = 0;         // Max 2
+    private int districtMonopolies = 0; // Per il bonus +3 PR finale
+    private int penaltyPr = 0;          // Eventuale -5 PR da salvataggio senza artisti
+    private boolean freelance = false;
     private boolean connected = true;
+
+    // Roster di artisti posseduti (ognuno con il prezzo pagato per calcolare il valore top)
+    private final List<ArtistTrack> roster = new ArrayList<>();
+    @JsonIgnore
+    private final List<ArtistTrack> draftOptions = new ArrayList<>();
+    private boolean draftCompleted = false;
 
     @JsonIgnore
     @Setter(AccessLevel.NONE)

@@ -6,26 +6,27 @@
   <title>Tin Pan Alley — The Algorhythm (Host)</title>
   <link rel="stylesheet" href="/shared/theme.css">
   <link rel="stylesheet" href="/host/host.css">
-  <!-- Libreria leggera per generare il QR Code -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-
   <div class="host-shell">
     <header class="host-header">
       <div class="host-brand">
         <h1>TIN PAN ALLEY</h1>
         <span id="lblHostTitle">THE ALGORHYTHM // Console Centrale</span>
       </div>
-      <div class="lang-switch">
-        <button class="lang-btn active" id="btn-it" onclick="changeLanguage('it')">IT</button>
-        <button class="lang-btn" id="btn-fr" onclick="changeLanguage('fr')">FR</button>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <span id="roundBadge" style="font-family:var(--font-display); color:var(--brand-magenta); font-weight:700;"></span>
+        <div class="lang-switch">
+          <button class="lang-btn active" id="btn-it" onclick="changeLanguage('it')">IT</button>
+          <button class="lang-btn" id="btn-fr" onclick="changeLanguage('fr')">FR</button>
+        </div>
       </div>
     </header>
 
     <div id="errorBanner" class="error-banner"></div>
 
-    <!-- SCHERMATA LOBBY -->
+    <!-- 1. LOBBY -->
     <main id="lobbyView" class="lobby-grid">
       <section class="qr-panel">
         <p id="lblScan" style="color: var(--text-secondary); font-size: 0.92rem;">Inquadra con lo smartphone per entrare</p>
@@ -42,21 +43,29 @@
           <h2 id="lblPlayers">Impresari in attesa</h2>
           <span class="player-count"><span id="playerCount">0</span> / 8</span>
         </div>
-
         <div class="players-list" id="playersList"></div>
-
-        <div class="lobby-footer">
-          <span class="hint-text" id="lblHint">Servono almeno 3 giocatori (max 8) per avviare la partita.</span>
+        <div class="lobby-footer" style="gap:12px; flex-wrap:wrap;">
+          <select id="genreSelect" style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle);">
+            <option value="HITS">Repertorio: Hit Mondiali</option>
+            <option value="ROCK">Repertorio: Rock Classics</option>
+            <option value="80S_90S">Repertorio: Anni '80 &amp; '90</option>
+            <option value="ITALY">Repertorio: Pop Italiano</option>
+            <option value="FRANCE">Repertorio: Chanson &amp; Pop FR</option>
+          </select>
           <button class="btn btn-primary" id="startBtn" onclick="startGame()" disabled>Inizia Partita</button>
         </div>
+        <span class="hint-text" id="lblHint">Servono almeno 3 giocatori (max 8) per avviare la partita.</span>
       </section>
     </main>
 
-    <!-- SCHERMATA PARTITA AVVIATA (Segnaposto Tappa 2) -->
-    <main id="gameView" style="display: none; text-align: center; padding: 60px 20px;">
-      <h2 id="lblDraft" style="font-family: var(--font-display); font-size: 2rem; color: var(--brand-cyan);">
-        Fase: Draft Iniziale in corso...
-      </h2>
+    <!-- 2. CONSOLE DI GIOCO ATTIVA -->
+    <main id="gameView" style="display: none; flex-direction: column; gap: 24px;">
+      <section class="players-panel" id="stagePanel" style="text-align:center;">
+        <h2 id="phaseTitle" style="font-family:var(--font-display); font-size:1.8rem; color:var(--brand-cyan);"></h2>
+        <div id="phaseContent" style="margin-top:16px;"></div>
+        <audio id="liveAudio" crossorigin="anonymous"></audio>
+      </section>
+      <section class="players-list" id="liveStandings"></section>
     </main>
   </div>
 
