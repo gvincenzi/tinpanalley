@@ -1,0 +1,9 @@
+server:
+  port: ${SERVER_PORT:8085}
+
+spring:
+  application:
+    name: tin-pan-alley-algorhythm
+  threads:
+    virtual:
+      enabled: true

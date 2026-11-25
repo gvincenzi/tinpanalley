@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin Pan Alley — Controller</title>
+  <link rel="stylesheet" href="/shared/theme.css">
+  <link rel="stylesheet" href="/player/player.css">
+</head>
+<body>
+
+  <div class="player-shell">
+    <header class="player-topbar">
+      <h1>TIN PAN ALLEY</h1>
+      <div class="lang-switch">
+        <button class="lang-btn active" id="btn-it" onclick="setPlayerLang('it')">IT</button>
+        <button class="lang-btn" id="btn-fr" onclick="setPlayerLang('fr')">FR</button>
+      </div>
+    </header>
+
+    <!-- SCHERMATA DI INGRESSO -->
+    <section id="joinView" class="card-panel">
+      <h2 id="lblJoinTitle">Entra in Partita</h2>
+      <input type="text" id="roomInput" class="input-field code" maxlength="4" placeholder="Codice Stanza (es. NMAD)">
+      <input type="text" id="nameInput" class="input-field" maxlength="18" placeholder="Il tuo nome da Impresario">
+
+      <div class="color-label" id="lblPickColor">Scegli la tua etichetta (Colore &amp; Simbolo)</div>
+      <div class="color-grid" id="colorGrid"></div>
+
+      <p id="errorMsg" class="error-msg"></p>
+      <button class="btn btn-primary" id="joinBtn" onclick="joinRoom()">Entra nel Club</button>
+    </section>
+
+    <!-- SCHERMATA SALA D'ATTESA -->
+    <section id="waitView" class="card-panel" style="display: none;">
+      <div id="myBadge" class="waiting-badge"></div>
+      <div class="stats-bar">
+        <div>Beats: <strong id="myBeats">3000</strong> BT</div>
+        <div>PR: <strong id="myPr">0</strong></div>
+      </div>
+      <p id="lblWaitMsg" style="color: var(--text-secondary); text-align: center; line-height: 1.5;">
+        Sei dentro! In attesa che l'Host avvii la partita...
+      </p>
+    </section>
+  </div>
+
+  <script src="/shared/players.js"></script>
+  <script src="/player/player.js"></script>
+</body>
+</html>

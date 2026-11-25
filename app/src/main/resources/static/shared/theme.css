@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  --bg-asphalt: #16171d;
+  --bg-midnight: #120b24;
+  --bg-card: #1d1f29;
+  --bg-elevated: #262936;
+  --border-subtle: rgba(255, 255, 255, 0.14);
+
+  --text-primary: #f4f4f8;
+  --text-secondary: #b4b7c9;
+  --text-muted: #7c8098;
+
+  --brand-cyan: #00e5ff;
+  --brand-magenta: #ff2a85;
+  --brand-gold: #ffb703;
+  --brand-acid: #52ff00;
+
+  --p1-color: #00e5ff;
+  --p2-color: #ff2a85;
+  --p3-color: #ffb703;
+  --p4-color: #52ff00;
+  --p5-color: #b565ff;
+  --p6-color: #ff4d4d;
+  --p7-color: #72efdd;
+  --p8-color: #ff7b00;
+
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: radial-gradient(circle at 20% 10%, #1e113a 0%, var(--bg-asphalt) 50%, #0b0c10 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-cyan) 0%, #00b8d4 100%);
+  color: #090a0f;
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.45);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.lang-switch {
+  display: inline-flex;
+  background: rgba(11, 12, 16, 0.75);
+  border: 1px solid var(--border-subtle);
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: var(--brand-cyan);
+  color: #090a0f;
+}
