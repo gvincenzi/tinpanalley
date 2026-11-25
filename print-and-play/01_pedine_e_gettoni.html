@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin Pan Alley — Print & Play: Pedine e Gettoni</title>
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/pedine-gettoni.css">
+</head>
+<body>
+
+  <!-- LIBRERIA ICONE SVG VETTORIALI CONDIVISE -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!-- Silhouette Manager (Cappotto + Cuffie) -->
+    <symbol id="icon-executive" viewBox="0 0 64 82">
+      <path d="M22 18c0-6 4.5-10 10-10s10 4 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="19" y="15" width="4" height="8" rx="2" fill="currentColor"/>
+      <rect x="41" y="15" width="4" height="8" rx="2" fill="currentColor"/>
+      <circle cx="32" cy="18" r="7.5" fill="var(--bg-asphalt)" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M16 32 L25 27 L32 37 L39 27 L48 32 L54 60 L44 62 L44 78 L35 78 L33 62 L31 62 L29 78 L20 78 L20 62 L10 60 Z"
+            fill="var(--bg-asphalt)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M25 27 L32 37 L39 27" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="32" y1="37" x2="32" y2="62" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+    </symbol>
+
+    <!-- 1. Cuffie -->
+    <symbol id="icon-headphones" viewBox="0 0 24 24">
+      <path d="M3 18v-6a9 9 0 0 1 18 0v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+
+    <!-- 2. Vinile -->
+    <symbol id="icon-vinyl" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="6 3"/>
+      <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+    </symbol>
+
+    <!-- 3. Fulmine -->
+    <symbol id="icon-bolt" viewBox="0 0 24 24">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- 4. Microfono -->
+    <symbol id="icon-mic" viewBox="0 0 24 24">
+      <rect x="9" y="2" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- 5. Sintetizzatore -->
+    <symbol id="icon-synth" viewBox="0 0 24 24">
+      <rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="7" y1="10" x2="7" y2="19" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="12" y1="10" x2="12" y2="19" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="17" y1="10" x2="17" y2="19" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="5.8" y="10" width="2.4" height="5" fill="currentColor"/>
+      <rect x="10.8" y="10" width="2.4" height="5" fill="currentColor"/>
+      <rect x="15.8" y="10" width="2.4" height="5" fill="currentColor"/>
+    </symbol>
+
+    <!-- 6. Nota Musicale -->
+    <symbol id="icon-note" viewBox="0 0 24 24">
+      <path d="M9 18V5l11-2v13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+
+    <!-- 7. Stella -->
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- 8. Corona -->
+    <symbol id="icon-crown" viewBox="0 0 24 24">
+      <path d="M3 18h18L19 7l-4.5 5L12 5 9.5 12 5 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="3" y1="21" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Equalizer Headliner -->
+    <symbol id="icon-equalizer" viewBox="0 0 40 28">
+      <rect x="2"  y="12" width="4" height="14" rx="1" fill="var(--brand-cyan)"/>
+      <rect x="9"  y="5"  width="4" height="21" rx="1" fill="var(--brand-gold)"/>
+      <rect x="16" y="1"  width="4" height="25" rx="1" fill="var(--brand-cyan)"/>
+      <rect x="23" y="8"  width="4" height="18" rx="1" fill="var(--brand-gold)"/>
+      <rect x="30" y="3"  width="4" height="23" rx="1" fill="var(--brand-cyan)"/>
+      <rect x="37" y="14" width="3" height="12" rx="1" fill="var(--brand-gold)"/>
+    </symbol>
+  </svg>
+
+  <!-- BARRA DI CONTROLLO (Solo a schermo) -->
+  <div class="pnp-toolbar no-print">
+    <div class="pnp-toolbar-title">
+      TIN PAN ALLEY <span data-i18n="p1.toolbar">// Print &amp; Play — Pedine e Gettoni</span>
+    </div>
+    <div class="pnp-toolbar-actions">
+      <div class="pnp-lang-switch">
+        <button class="pnp-lang-btn" id="btn-it" onclick="setPnpLanguage('it', 'p1')">IT</button>
+        <button class="pnp-lang-btn" id="btn-fr" onclick="setPnpLanguage('fr', 'p1')">FR</button>
+      </div>
+      <button class="btn-pnp" id="toggleInkBtn" onclick="toggleInkMode()">
+        Modalità Ink-Friendly
+      </button>
+      <button class="btn-pnp primary" data-i18n="common.print1" onclick="window.print()">
+        Stampa / Salva PDF (A4)
+      </button>
+    </div>
+  </div>
+
+  <!-- FOGLIO A4 UNICO -->
+  <main class="a4-page">
+    <header class="page-header">
+      <h1 data-i18n="p1.headerTitle">TIN PAN ALLEY — Pedine &amp; Gettoni</h1>
+      <span class="subtitle" data-i18n="p1.headerSub">Foglio 1/1 • Scala reale 100% (Non adattare alla pagina in stampa)</span>
+    </header>
+
+    <!-- SEZIONE 1: 8 PEDINE IMPRESARIO -->
+    <div class="section-title">
+      <span data-i18n="p1.sec1Title">1. Pedine Impresario (8 pz)</span>
+      <small data-i18n="p1.sec1Sub">Esagoni 34 × 39 mm • 1 per giocatore</small>
+    </div>
+    <section class="pawns-grid" id="pawnsContainer"></section>
+
+    <!-- SEZIONE 2 & 3: 16 GETTONI CLUB + HEADLINER -->
+    <div class="bottom-split">
+      <div class="clubs-column">
+        <div class="section-title">
+          <span data-i18n="p1.sec2Title">2. Gettoni Controllo Club (16 pz)</span>
+          <small data-i18n="p1.sec2Sub">Ø 25 mm • 2 per giocatore</small>
+        </div>
+        <section class="clubs-grid" id="clubsContainer"></section>
+      </div>
+
+      <aside class="headliner-column">
+        <div class="headliner-box">
+          <div class="section-title" style="margin-bottom: 1mm;">
+            <span data-i18n="p1.sec3Title">3. Primo Giocatore</span>
+          </div>
+          <div class="headliner-token">
+            <div class="headliner-inner">
+              <svg><use href="#icon-equalizer"/></svg>
+              <span class="headliner-label">HEADLINER</span>
+              <span class="headliner-sub" data-i18n="p1.headlinerSub">1° Giocatore</span>
+            </div>
+          </div>
+          <small style="color: var(--text-muted); font-size: 7.5pt;" data-i18n="p1.headlinerNote">Ø 40 mm • Passa in senso orario a fine Round</small>
+        </div>
+
+        <div class="cutting-notes">
+          <h3 data-i18n="p1.cutTitle">Istruzioni di Stampa</h3>
+          <ul>
+            <li data-i18n="p1.cut1">Stampa su cartoncino da <strong>250–300 g/m²</strong> (oppure incolla su cartone pressato da 1–1,5 mm).</li>
+            <li data-i18n="p1.cut2">Imposta lo zoom di stampa al <strong>100%</strong> (nessun adattamento ai margini) affinché i gettoni misurino esattamente <strong>25 mm</strong> come gli anelli del tabellone.</li>
+            <li data-i18n="p1.cut3">Ritaglia lungo le linee tratteggiate esterne.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="js/pnp-translations.js"></script>
+  <script>
+    const PLAYERS = [
+      { id: 1, name: 'Cyan',   color: 'var(--p1-color)', icon: 'icon-headphones' },
+      { id: 2, name: 'Magenta',color: 'var(--p2-color)', icon: 'icon-vinyl' },
+      { id: 3, name: 'Gold',   color: 'var(--p3-color)', icon: 'icon-bolt' },
+      { id: 4, name: 'Acid',   color: 'var(--p4-color)', icon: 'icon-mic' },
+      { id: 5, name: 'Purple', color: 'var(--p5-color)', icon: 'icon-synth' },
+      { id: 6, name: 'Coral',  color: 'var(--p6-color)', icon: 'icon-note' },
+      { id: 7, name: 'Ice',    color: 'var(--p7-color)', icon: 'icon-star' },
+      { id: 8, name: 'Orange', color: 'var(--p8-color)', icon: 'icon-crown' }
+    ];
+
+    const pawnsContainer = document.getElementById('pawnsContainer');
+    PLAYERS.forEach(p => {
+      const pawn = document.createElement('div');
+      pawn.className = 'pawn-hex';
+      pawn.style.color = p.color;
+      pawn.innerHTML = `
+        <svg class="hex-frame" viewBox="0 0 100 115" preserveAspectRatio="none">
+          <polygon points="50,1 99,29 99,86 50,114 1,86 1,29"
+                   fill="var(--bg-card)" stroke="var(--cut-line)" stroke-width="1" stroke-dasharray="3 2"/>
+          <polygon points="50,5 95,31 95,84 50,110 5,84 5,31"
+                   fill="var(--bg-asphalt)" stroke="currentColor" stroke-width="2.2"/>
+        </svg>
+        <div class="pawn-content">
+          <svg class="pawn-silhouette"><use href="#icon-executive"/></svg>
+          <div class="pawn-badge">
+            <svg><use href="#${p.icon}"/></svg>
+          </div>
+        </div>
+      `;
+      pawnsContainer.appendChild(pawn);
+    });
+
+    const clubsContainer = document.getElementById('clubsContainer');
+    PLAYERS.forEach(p => {
+      for (let i = 0; i < 2; i++) {
+        const token = document.createElement('div');
+        token.className = 'club-token';
+        token.style.color = p.color;
+        token.innerHTML = `
+          <div class="club-ring">
+            <svg><use href="#${p.icon}"/></svg>
+          </div>
+        `;
+        clubsContainer.appendChild(token);
+      }
+    });
+
+    initPnpLanguage('p1');
+  </script>
+</body>
+</html>

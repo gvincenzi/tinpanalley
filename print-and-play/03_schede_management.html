@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin Pan Alley — Print & Play: Schede Ufficio Management</title>
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/schede-management.css">
+</head>
+<body>
+
+  <!-- BARRA DI CONTROLLO (Solo a schermo) -->
+  <div class="pnp-toolbar no-print">
+    <div class="pnp-toolbar-title">
+      TIN PAN ALLEY <span data-i18n="p3.toolbar">// Print &amp; Play — Schede Ufficio Management</span>
+    </div>
+    <div class="pnp-toolbar-actions">
+      <div class="pnp-lang-switch">
+        <button class="pnp-lang-btn" id="btn-it" onclick="setPnpLanguage('it', 'p3')">IT</button>
+        <button class="pnp-lang-btn" id="btn-fr" onclick="setPnpLanguage('fr', 'p3')">FR</button>
+      </div>
+      <button class="btn-pnp" id="toggleInkBtn" onclick="toggleInkMode()">
+        Modalità Ink-Friendly
+      </button>
+      <button class="btn-pnp primary" data-i18n="common.print1" onclick="window.print()">
+        Stampa / Salva PDF (A4)
+      </button>
+    </div>
+  </div>
+
+  <!-- FOGLIO A4 CON 2 SCHEDE A5 -->
+  <main class="a4-page">
+    <header class="page-header">
+      <h1 data-i18n="p3.headerTitle">TIN PAN ALLEY — Schede Ufficio Management (2× A5)</h1>
+      <span class="subtitle" data-i18n="p3.headerSub">Foglio 1/1 • Set 8 giocatori: stampa 4 copie su cartoncino</span>
+    </header>
+
+    <section class="sheets-stack" id="matsContainer"></section>
+  </main>
+
+  <template id="matTemplate">
+    <article class="player-mat">
+      <div class="mat-frame">
+
+        <!-- INTESTAZIONE -->
+        <header class="mat-header">
+          <div class="mat-title-block">
+            <h2>Tin Pan Alley</h2>
+            <span data-i18n="p3.matSub">// Ufficio Management</span>
+          </div>
+          <div class="mat-setup-pills">
+            <span class="pill" data-i18n="p3.pillStart">Start: <strong>3.000 BT</strong></span>
+            <span class="pill" data-i18n="p3.pillRound">Round: <strong>3</strong> (3-4G) / <strong>2</strong> (5-8G)</span>
+            <span class="pill" data-i18n="p3.pillPa">Azioni: <strong>3 PA</strong> / Round</span>
+          </div>
+        </header>
+
+        <!-- CORPO A 3 COLONNE -->
+        <div class="mat-body">
+
+          <!-- COLONNA 1: FASE 1 & FASE 2 -->
+          <div class="panel">
+            <div class="panel-title" data-i18n="p3.col1Title">Fase 1 &amp; 2 • Mercato e Azioni</div>
+            <ul class="action-list">
+              <li>
+                <div class="action-head">
+                  <span data-i18n="p3.a1Title">1. Asta Segreta (App)</span>
+                  <span class="cost-tag gold" data-i18n="p3.a1Cost">Min 100 BT</span>
+                </div>
+                <span data-i18n="p3.a1Desc">4 artisti in asta (60 sec). Multipli di 100 BT. Pareggio: vince chi ha meno PR.</span>
+              </li>
+              <li>
+                <div class="action-head">
+                  <span data-i18n="p3.a2Title">2. Spostarsi (Mappa)</span>
+                  <span class="cost-tag" data-i18n="p3.a2Cost">1 PA</span>
+                </div>
+                <span data-i18n="p3.a2Desc">Muovi la pedina in un Distretto adiacente lungo l'anello.</span>
+              </li>
+              <li>
+                <div class="action-head">
+                  <span data-i18n="p3.a3Title">2. Licenza Club</span>
+                  <span class="cost-tag" data-i18n="p3.a3Cost">1 PA + 800 BT</span>
+                </div>
+                <span data-i18n="p3.a3Desc">Occupa 1 Club libero (max 2). Incassi <strong>300 BT</strong> di royalty per ogni live altrui.</span>
+              </li>
+              <li>
+                <div class="action-head">
+                  <span data-i18n="p3.a4Title">2. Incassare Sponsor</span>
+                  <span class="cost-tag" data-i18n="p3.a4Cost">1 PA</span>
+                </div>
+                <span data-i18n="p3.a4Desc">Ritira <strong>+300 BT</strong> sicuri dalla Banca.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- COLONNA 2: FASE 3 LIVE SHOW -->
+          <div class="panel">
+            <div class="panel-title gold" data-i18n="p3.col2Title">Fase 3 • Live Show &amp; Trendsetter</div>
+            <div class="sub-note" data-i18n="p3.liveNote">
+              Max <strong>1 Live/Round</strong> nel tuo Distretto (Royalty <strong>300 BT</strong> se Club altrui).
+            </div>
+
+            <table class="trend-table">
+              <thead>
+                <tr>
+                  <th data-i18n="p3.thOutcome">Esito (su N avversari)</th>
+                  <th style="text-align:right" data-i18n="p3.thBank">Banca</th>
+                  <th style="text-align:right" data-i18n="p3.thPr">PR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="p3.tFlop"><strong>Flop:</strong> 0 indovinano</td>
+                  <td class="val-bt">0 BT</td>
+                  <td class="val-pr">0</td>
+                </tr>
+                <tr class="highlight">
+                  <td data-i18n="p3.tTrend"><strong>Trendsetter:</strong> 1 – ½ (⌊N/2⌋)</td>
+                  <td class="val-bt">1.200 BT</td>
+                  <td class="val-pr">+3</td>
+                </tr>
+                <tr>
+                  <td data-i18n="p3.tMain"><strong>Mainstream:</strong> &gt; ½ – N-1</td>
+                  <td class="val-bt">800 BT</td>
+                  <td class="val-pr">+1</td>
+                </tr>
+                <tr>
+                  <td data-i18n="p3.tScont"><strong>Scontato:</strong> Tutti (N)</td>
+                  <td class="val-bt">400 BT</td>
+                  <td class="val-pr">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="score-grid">
+              <div class="score-item"><span data-i18n="p3.scArtist">Artista esatto</span><strong>+2 PR</strong></div>
+              <div class="score-item"><span data-i18n="p3.scTitle">Titolo esatto</span><strong>+3 PR</strong></div>
+            </div>
+            <div class="sub-note" data-i18n="p3.scNotes">
+              <strong>Decennio (+1 PR):</strong> solo se sbagli entrambi.<br>
+              <strong>Scommessa (200 BT):</strong> se indovini Artista o Titolo, PR ×2 (non il decennio) + <strong>500 BT</strong>.
+            </div>
+          </div>
+
+          <!-- COLONNA 3: GETTONI CLUB & AWARDS -->
+          <div class="panel">
+            <div class="panel-title magenta" data-i18n="p3.col3Title">Gettoni Club &amp; Finale</div>
+            <div class="tokens-dock">
+              <div class="token-slot" data-i18n="p3.slot1">Gettone<br>Club 1</div>
+              <div class="token-slot" data-i18n="p3.slot2">Gettone<br>Club 2</div>
+            </div>
+            <div class="sub-note" data-i18n="p3.awardsNotes">
+              <strong>NoMad Music Awards (Finale):</strong><br>
+              • Punti blind test raddoppiati (<strong>+4/+6 PR</strong>).<br>
+              • Premio della Critica: <strong>+10 PR</strong>.<br><br>
+              <strong>Bonus di Fine Partita:</strong><br>
+              • <strong>+1 PR</strong> ogni Club controllato.<br>
+              • <strong>+3 PR</strong> per Monopolio Distretto (2 Club).<br>
+              • <strong>+1 PR</strong> ogni <strong>500 BT</strong> residui.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="mat-footer">
+          <span data-i18n="p3.footerText">
+            <span class="freelance-badge">SCOUT FREELANCE (Salvagente):</span>
+            se non puoi pagare, ricevi <strong>1.000 BT</strong> cedendo il tuo artista top (o <strong>-5 PR</strong> finali) e ottieni <strong>+1 PR</strong> extra nei live del Round.
+          </span>
+        </footer>
+
+      </div>
+    </article>
+  </template>
+
+  <script src="js/pnp-translations.js"></script>
+  <script>
+    const container = document.getElementById('matsContainer');
+    const template = document.getElementById('matTemplate');
+
+    for (let i = 0; i < 2; i++) {
+      container.appendChild(template.content.cloneNode(true));
+    }
+
+    initPnpLanguage('p3');
+  </script>
+</body>
+</html>

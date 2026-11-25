@@ -1,0 +1,295 @@
+/* ==========================================================================
+   TIN PAN ALLEY — Stili specifici per Schede Ufficio Management (A5)
+   Richiede: design-system.css
+   ========================================================================== */
+
+.sheets-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
+}
+
+/* Singola Scheda Giocatore (circa A5 orizzontale su A4) */
+.player-mat {
+  width: 190mm;
+  height: 129mm;
+  padding: 1.5mm;
+  border: 1px dashed var(--cut-line);
+  background: var(--bg-asphalt);
+  display: flex;
+}
+
+body.ink-friendly .player-mat {
+  background: #ffffff;
+}
+
+.mat-frame {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--brand-cyan);
+  border-radius: 3mm;
+  padding: 3.5mm 4.5mm;
+  background: radial-gradient(circle at 85% 15%, rgba(0, 229, 255, 0.06) 0%, transparent 50%),
+              linear-gradient(160deg, var(--bg-card) 0%, var(--bg-asphalt) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5mm;
+}
+
+body.ink-friendly .mat-frame {
+  background: #ffffff;
+}
+
+/* --- INTESTAZIONE SCHEDA --- */
+.mat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 2mm;
+}
+
+.mat-title-block {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.mat-title-block h2 {
+  font-family: var(--font-display);
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--brand-gold);
+  text-transform: uppercase;
+}
+
+.mat-title-block span {
+  font-family: var(--font-display);
+  font-size: 8.5pt;
+  color: var(--brand-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mat-setup-pills {
+  display: flex;
+  gap: 2.5mm;
+}
+
+.pill {
+  font-size: 7pt;
+  font-weight: 600;
+  padding: 0.8mm 2.2mm;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.pill strong {
+  color: var(--brand-gold);
+}
+
+/* --- GRIGLIA CENTRALE A 3 COLONNE --- */
+.mat-body {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 0.95fr;
+  gap: 3.5mm;
+  flex: 1;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2mm;
+  padding: 2.5mm 3mm;
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+body.ink-friendly .panel {
+  background: #f8f9fc;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-cyan);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1mm;
+}
+
+.panel-title.gold { color: var(--brand-gold); }
+.panel-title.magenta { color: var(--brand-magenta); }
+
+/* Liste Azioni e Regole */
+.action-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6mm;
+  font-size: 7.2pt;
+  color: var(--text-secondary);
+}
+
+.action-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3mm;
+}
+
+.action-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.cost-tag {
+  font-family: var(--font-display);
+  font-size: 6.8pt;
+  padding: 0.2mm 1.5mm;
+  border-radius: 3px;
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--brand-cyan);
+  border: 0.5px solid var(--brand-cyan);
+}
+
+.cost-tag.gold {
+  background: rgba(255, 183, 3, 0.12);
+  color: var(--brand-gold);
+  border-color: var(--brand-gold);
+}
+
+/* Tabella Trendsetter */
+.trend-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7pt;
+}
+
+.trend-table th {
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 6.5pt;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.trend-table td {
+  padding: 1.1mm 0.5mm;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+body.ink-friendly .trend-table td {
+  border-bottom-color: #e2e8f0;
+}
+
+.trend-table tr.highlight td {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.trend-table .val-bt {
+  font-family: var(--font-display);
+  color: var(--brand-gold);
+  font-weight: 700;
+  text-align: right;
+}
+
+.trend-table .val-pr {
+  font-family: var(--font-display);
+  color: var(--brand-cyan);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Box Scommessa e Punteggio */
+.score-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5mm;
+  font-size: 7pt;
+}
+
+.score-item {
+  background: var(--bg-elevated);
+  border-radius: 1.5mm;
+  padding: 1.2mm 2mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-item strong {
+  font-family: var(--font-display);
+  color: var(--brand-cyan);
+}
+
+.sub-note {
+  font-size: 6.6pt;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.sub-note strong {
+  color: var(--text-primary);
+}
+
+/* Colonna destra: Slot Gettoni Club */
+.tokens-dock {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5mm 0;
+}
+
+.token-slot {
+  width: 25mm;
+  height: 25mm;
+  border-radius: 50%;
+  border: 1.2px dashed var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 6pt;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+body.ink-friendly .token-slot {
+  background: #ffffff;
+}
+
+/* --- FOOTER: FESTIVAL E CALCOLO FINALE --- */
+.mat-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.8mm;
+  font-size: 6.8pt;
+  color: var(--text-secondary);
+}
+
+.mat-footer strong {
+  color: var(--brand-gold);
+}
+
+.freelance-badge {
+  color: var(--brand-magenta);
+  font-weight: 700;
+}

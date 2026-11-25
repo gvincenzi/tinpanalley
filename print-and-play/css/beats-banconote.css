@@ -1,0 +1,157 @@
+/* ==========================================================================
+   TIN PAN ALLEY — Stili specifici per Banconote Beats (BT)
+   Richiede: design-system.css
+   ========================================================================== */
+
+/* Griglia 2x5 allineata per taglio rapido */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 91mm);
+  justify-content: space-between;
+  row-gap: 4mm;
+}
+
+.beat-note {
+  width: 91mm;
+  height: 47mm;
+  padding: 1.5mm;
+  border: 1px dashed var(--cut-line);
+  background: var(--bg-asphalt);
+  position: relative;
+  display: flex;
+}
+
+body.ink-friendly .beat-note {
+  background: #ffffff;
+}
+
+/* Cornice interna stile Backstage Pass / Voucher */
+.note-frame {
+  width: 100%;
+  height: 100%;
+  border: 1.6px solid currentColor;
+  border-radius: 3mm;
+  padding: 2.5mm 4mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, var(--bg-elevated) 0%, var(--bg-asphalt) 88%);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.45);
+}
+
+body.ink-friendly .note-frame {
+  background: #ffffff;
+  box-shadow: none;
+}
+
+/* Micro-cornice angolare */
+.note-frame::before {
+  content: "";
+  position: absolute;
+  inset: 1.2mm;
+  border: 0.5px solid currentColor;
+  border-radius: 2mm;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Riga superiore: Titolo gioco e taglio piccolo */
+.note-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.note-brand {
+  font-family: var(--font-display);
+  font-size: 6.5pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.note-corner-val {
+  font-family: var(--font-display);
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: currentColor;
+}
+
+/* Corpo centrale: Onda sonora + Valore grande */
+.note-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4mm;
+  position: relative;
+  z-index: 2;
+}
+
+.note-wave {
+  width: 13mm;
+  height: 11mm;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.note-value-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+}
+
+.note-number {
+  font-family: var(--font-display);
+  font-size: 26pt;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: currentColor;
+  text-shadow: 0 0 8px currentColor;
+}
+
+body.ink-friendly .note-number {
+  text-shadow: none;
+}
+
+.note-unit {
+  font-family: var(--font-display);
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+/* Riga inferiore: dicitura BEATS + barre equalizzatore */
+.note-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.note-label {
+  font-family: var(--font-display);
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.note-eq {
+  width: 18mm;
+  height: 4mm;
+  opacity: 0.75;
+}
+
+/* Varianti colore per taglio */
+.tier-100  { color: var(--brand-cyan); }
+.tier-500  { color: var(--brand-magenta); }
+.tier-1000 { color: var(--brand-gold); }

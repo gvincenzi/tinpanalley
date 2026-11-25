@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIN PAN ALLEY: The NoMad Music Moguls — Gioco da Tavolo Ibrido</title>
+  <link rel="stylesheet" href="print-and-play/css/design-system.css">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">TIN PAN <span>ALLEY</span></a>
+      <ul class="nav-links">
+        <li><a href="#gioco" data-i18n="nav.game">Il Gioco</a></li>
+        <li><a href="#tabellone" data-i18n="nav.board">Tabellone</a></li>
+        <li><a href="#download" data-i18n="nav.pnp">Print &amp; Play</a></li>
+        <li><a href="#regolamento" data-i18n="nav.rules">Regolamento</a></li>
+        <li><a href="#webapp" data-i18n="nav.app">The Algorhythm</a></li>
+      </ul>
+      <div class="lang-switch" aria-label="Language selector">
+        <button class="lang-btn" id="btn-it" onclick="setLanguage('it')">IT</button>
+        <button class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">FR</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge-status" data-i18n="hero.badge">Prototipo in Sviluppo • v1.0</span>
+        <h1>TIN PAN ALLEY</h1>
+        <div class="hero-subtitle">The NoMad Music Moguls</div>
+        <p class="hero-tagline" data-i18n="hero.tagline">"Scopri il talento. Accendi i club. Conquista la scena."</p>
+        <p class="hero-desc" data-i18n="hero.desc">
+          Un gioco da tavolo ibrido ambientato nella scena musicale contemporanea di Manhattan.
+          Gestisci la tua agenzia, investi in <strong>Beats (BT)</strong>, controlla i club storici di NoMad
+          e sfida gli avversari a colpi di blind test orchestrati da <strong>The Algorhythm</strong>.
+        </p>
+
+        <div class="specs-row">
+          <div class="spec-pill" data-i18n="hero.specPlayers"><strong>3–8</strong> Giocatori</div>
+          <div class="spec-pill" data-i18n="hero.specDuration"><strong>45–60</strong> Minuti</div>
+          <div class="spec-pill" data-i18n="hero.specAge"><strong>14+</strong> Età</div>
+          <div class="spec-pill" data-i18n="hero.specFormat"><strong>Tavolo + Web-App</strong></div>
+        </div>
+
+        <div class="cta-group">
+          <a href="#download" class="btn btn-primary" data-i18n="hero.ctaPnp">Scarica il Print &amp; Play</a>
+          <a href="#regolamento" class="btn btn-secondary" data-i18n="hero.ctaRules">Leggi il Regolamento</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="cover-frame">
+          <img src="assets/box_cover.png" alt="Tin Pan Alley Box Cover">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- COME FUNZIONA -->
+  <section id="gioco" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="features.title">Gestione strategica incontra <span>l'ascolto dal vivo</span></h2>
+        <p data-i18n="features.subtitle">Nessun giocatore deve sacrificarsi nel ruolo di moderatore o DJ. Tutti competono dall'inizio alla fine.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <span class="feature-tag" data-i18n="features.c1Tag">01 • Zero Downtime</span>
+          <h3 data-i18n="features.c1Title">DJ Digitale &amp; Blind Test</h3>
+          <p data-i18n="features.c1Desc">
+            Tutti ascoltano i brani simultaneamente e inviano le risposte dal proprio smartphone.
+            Il motore di <em>Fuzzy Matching</em> convalida artisti e titoli anche in caso di piccoli errori di battitura.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-tag" data-i18n="features.c2Tag">02 • Psicologia</span>
+          <h3 data-i18n="features.c2Title">La Regola "Trendsetter"</h3>
+          <p data-i18n="features.c2Desc">
+            Quando organizzi una serata in un club, non scegliere hit troppo scontate né brani introvabili:
+            incassi il massimo solo se indovinano da 1 fino alla metà degli avversari.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-tag" data-i18n="features.c3Tag">03 • Anti-Eliminazione</span>
+          <h3 data-i18n="features.c3Title">Scout Freelance &amp; Awards</h3>
+          <p data-i18n="features.c3Desc">
+            Chi resta senza Beats non viene eliminato: attiva il salvagente <em>Scout Freelance</em> e continua
+            a fare punti fino al gran finale dei <strong>NoMad Music Awards</strong>.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- IL TABELLONE -->
+  <section id="tabellone" class="section">
+    <div class="container">
+      <div class="board-showcase">
+        <img src="assets/board.png" alt="Tin Pan Alley Game Board" class="board-img">
+        <div class="board-info">
+          <h3 data-i18n="board.title">I 5 Distretti e i 10 Club di NoMad</h3>
+          <p data-i18n="board.desc">
+            I giocatori si spostano lungo un anello urbano per acquisire le licenze dei club più ambiti,
+            incassare 300 BT di royalty dai concerti altrui e puntare al monopolio di quartiere.
+          </p>
+          <ul class="district-list">
+            <li><strong>Broadway</strong> Amplifier • Side B</li>
+            <li><strong>Flatiron</strong> Prism • Rooftop</li>
+            <li><strong>5th Avenue</strong> Signal • The Pulse</li>
+            <li><strong>Koreatown</strong> Night Shift • Frequency</li>
+            <li><strong>Madison Sq. Park</strong> Green Room • Open Air</li>
+          </ul>
+          <a href="assets/board.png" download="TinPanAlley_Board.png" class="btn btn-secondary btn-small" data-i18n="board.cta">
+            Scarica Tabellone (PNG)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREA DOWNLOAD PRINT & PLAY E REGOLAMENTO -->
+  <section id="download" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="downloads.title">Materiali <span>Print &amp; Play</span></h2>
+        <p data-i18n="downloads.subtitle">
+          Apri ogni file nel browser, scegli tra la modalità <strong>Notturna (Neon)</strong> o
+          <strong>Ink-Friendly</strong> (risparmio inchiostro) e stampa su fogli A4 al 100% di scala.
+        </p>
+      </div>
+
+      <div class="downloads-grid">
+        <div class="dl-card">
+          <div>
+            <span class="dl-meta" data-i18n="downloads.d1Meta">Foglio A4 • 1 Pagina</span>
+            <h3 data-i18n="downloads.d1Title">Pedine, Gettoni Club &amp; Headliner</h3>
+            <p data-i18n="downloads.d1Desc">8 pedine esagonali Impresario, 16 gettoni circolari Controllo Club (Ø 25 mm) e il segnalino Primo Giocatore Headliner.</p>
+          </div>
+          <div class="dl-actions">
+            <a href="print-and-play/01_pedine_e_gettoni.html" target="_blank" class="btn btn-primary btn-small" data-i18n="downloads.btnPrint">
+              Apri &amp; Stampa (HTML / PDF)
+            </a>
+          </div>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <span class="dl-meta" data-i18n="downloads.d2Meta">Fogli A4 • 3 Pagine</span>
+            <h3 data-i18n="downloads.d2Title">Banconote Beats (BT)</h3>
+            <p data-i18n="downloads.d2Desc">La valuta ufficiale del gioco impaginata per taglio rapido: tagli da 100 BT (Ciano), 500 BT (Magenta) e 1.000 BT (Oro).</p>
+          </div>
+          <div class="dl-actions">
+            <a href="print-and-play/02_beats_banconote.html" target="_blank" class="btn btn-primary btn-small" data-i18n="downloads.btnPrint">
+              Apri &amp; Stampa (HTML / PDF)
+            </a>
+          </div>
+        </div>
+
+        <div class="dl-card">
+          <div>
+            <span class="dl-meta" data-i18n="downloads.d3Meta">Foglio A4 • 2 Schede A5</span>
+            <h3 data-i18n="downloads.d3Title">Schede Ufficio Management</h3>
+            <p data-i18n="downloads.d3Desc">Riferimento rapido al tavolo per ogni giocatore: azioni, costi, tabella Trendsetter, scommesse e alloggiamento gettoni.</p>
+          </div>
+          <div class="dl-actions">
+            <a href="print-and-play/03_schede_management.html" target="_blank" class="btn btn-primary btn-small" data-i18n="downloads.btnPrint">
+              Apri &amp; Stampa (HTML / PDF)
+            </a>
+          </div>
+        </div>
+
+        <div id="regolamento" class="dl-card highlight">
+          <div>
+            <span class="dl-meta" data-i18n="downloads.rMeta">Documentazione Ufficiale • IT / FR</span>
+            <h3 data-i18n="downloads.rTitle">Regolamento Completo</h3>
+            <p data-i18n="downloads.rDesc">Consulta le regole aggiornate (v1.0) in Italiano o in Francese, complete di esempi, formule di punteggio e spareggi.</p>
+          </div>
+          <div class="dl-actions">
+            <a href="rules/regolamento_IT.md" class="btn btn-secondary btn-small">🇮🇹 Regolamento (IT)</a>
+            <a href="rules/reglement_FR.md" class="btn btn-secondary btn-small">🇫🇷 Règlement (FR)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB APP TEASER -->
+  <section id="webapp" class="section">
+    <div class="container">
+      <div class="app-banner">
+        <h3 data-i18n="webapp.title">Prossimamente: <span>The Algorhythm</span> Web-App</h3>
+        <p data-i18n="webapp.desc">
+          Il modulo digitale per gestire le aste al buio simultanee, l'integrazione streaming con
+          Spotify / Deezer e il calcolo automatico dei punteggi in tempo reale è attualmente in fase di progettazione
+          nella cartella <code>/app</code>.
+        </p>
+        <a href="assets/box_cover.png" download="TinPanAlley_BoxCover.png" class="btn btn-secondary btn-small" data-i18n="webapp.cta">
+          Scarica Cover Scatola (PNG)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer.credit"><strong>TIN PAN ALLEY: The NoMad Music Moguls</strong> — Ideato e progettato da <strong>Giuseppe Vincenzi</strong></p>
+      <p style="margin-top: 6px;" data-i18n="footer.rights">Prototipo in sviluppo • Tutti i diritti riservati</p>
+    </div>
+  </footer>
+
+  <!-- LOGICA MULTILINGUA -->
+  <script src="translations.js"></script>
+  <script>
+    function getNestedValue(obj, path) {
+      return path.split('.').reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);
+    }
+
+    function setLanguage(lang) {
+      if (!TRANSLATIONS[lang]) lang = 'it';
+
+      document.documentElement.lang = lang;
+      document.title = TRANSLATIONS[lang].pageTitle;
+
+      // Aggiorna tutti gli elementi con attributo data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const value = getNestedValue(TRANSLATIONS[lang], key);
+        if (value !== null) {
+          el.innerHTML = value;
+        }
+      });
+
+      // Aggiorna stato pulsanti
+      document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+
+      // Salva preferenza
+      localStorage.setItem('tinpanalley_lang', lang);
+    }
+
+    // Inizializzazione automatica: preferenza salvata o lingua del browser
+    (function initLanguage() {
+      const saved = localStorage.getItem('tinpanalley_lang');
+      if (saved && TRANSLATIONS[saved]) {
+        setLanguage(saved);
+      } else {
+        const browserLang = (navigator.language || 'it').toLowerCase();
+        setLanguage(browserLang.startsWith('fr') ? 'fr' : 'it');
+      }
+    })();
+  </script>
+
+</body>
+</html>

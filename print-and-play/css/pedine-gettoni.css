@@ -1,0 +1,257 @@
+/* ==========================================================================
+   TIN PAN ALLEY — Stili specifici per Pedine Impresario, Gettoni Club e Headliner
+   Richiede: design-system.css
+   ========================================================================== */
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-cyan);
+  margin-bottom: 4mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title small {
+  font-family: var(--font-body);
+  font-size: 8pt;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text-secondary);
+}
+
+/* --- GRIGLIA 8 PEDINE ESAGONALI --- */
+.pawns-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 34mm);
+  justify-content: space-between;
+  row-gap: 6mm;
+  margin-bottom: 9mm;
+}
+
+.pawn-hex {
+  width: 34mm;
+  height: 39.2mm; /* Proporzione esagono regolare */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pawn-hex svg.hex-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pawn-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pawn-silhouette {
+  width: 21mm;
+  height: 27mm;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+body.ink-friendly .pawn-silhouette {
+  filter: none;
+}
+
+.pawn-badge {
+  position: absolute;
+  bottom: 4.5mm;
+  right: 3.5mm;
+  width: 8mm;
+  height: 8mm;
+  border-radius: 50%;
+  background: var(--bg-asphalt);
+  border: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px currentColor;
+}
+
+body.ink-friendly .pawn-badge {
+  box-shadow: none;
+}
+
+.pawn-badge svg {
+  width: 4.8mm;
+  height: 4.8mm;
+}
+
+/* --- AREA INFERIORE: 16 GETTONI CLUB + HEADLINER --- */
+.bottom-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8mm;
+}
+
+.clubs-column {
+  flex: 0 0 auto;
+}
+
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 25mm);
+  gap: 4.5mm 5mm;
+}
+
+.club-token {
+  width: 25mm;
+  height: 25mm;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px dashed var(--cut-line);
+  padding: 1.4mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.club-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.8px solid currentColor;
+  box-shadow: 0 0 5px currentColor, inset 0 0 5px currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, var(--bg-elevated) 0%, var(--bg-asphalt) 100%);
+}
+
+body.ink-friendly .club-ring {
+  box-shadow: none;
+  background: #ffffff;
+}
+
+.club-ring svg {
+  width: 12mm;
+  height: 12mm;
+  filter: drop-shadow(0 0 2px currentColor);
+}
+
+body.ink-friendly .club-ring svg {
+  filter: none;
+}
+
+/* --- COLONNA DESTRA: HEADLINER + NOTE --- */
+.headliner-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8mm;
+}
+
+.headliner-box {
+  width: 100%;
+  padding: 5mm;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+body.ink-friendly .headliner-box {
+  background: #f8f9fc;
+}
+
+.headliner-token {
+  width: 40mm;
+  height: 40mm;
+  border-radius: 50%;
+  border: 1px dashed var(--cut-line);
+  padding: 1.8mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-asphalt);
+  color: var(--brand-gold);
+  margin: 3mm 0;
+}
+
+.headliner-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2.5px solid var(--brand-gold);
+  box-shadow: 0 0 8px rgba(255, 183, 3, 0.5), inset 0 0 8px rgba(0, 229, 255, 0.25);
+  background: radial-gradient(circle, #2a2114 0%, var(--bg-asphalt) 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5mm;
+}
+
+body.ink-friendly .headliner-inner {
+  box-shadow: none;
+  background: #fffbeb;
+}
+
+.headliner-inner svg {
+  width: 16mm;
+  height: 13mm;
+}
+
+.headliner-label {
+  font-family: var(--font-display);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--brand-gold);
+}
+
+.headliner-sub {
+  font-size: 5.5pt;
+  letter-spacing: 0.1em;
+  color: var(--brand-cyan);
+  text-transform: uppercase;
+}
+
+.cutting-notes {
+  width: 100%;
+  padding: 4mm;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 8pt;
+  color: var(--text-secondary);
+}
+
+.cutting-notes h3 {
+  font-family: var(--font-display);
+  font-size: 8.5pt;
+  color: var(--text-primary);
+  margin-bottom: 2mm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cutting-notes ul {
+  padding-left: 4mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+}

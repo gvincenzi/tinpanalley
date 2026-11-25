@@ -1,0 +1,282 @@
+/* ==========================================================================
+   TIN PAN ALLEY: The NoMad Music Moguls
+   Design System Ufficiale (Print & Play + Web-App "The Algorhythm")
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  /* --- Superfici & Sfondi (Tema Notturno / Scatola) --- */
+  --bg-asphalt: #16171d;
+  --bg-midnight: #120b24;
+  --bg-card: #1d1f29;
+  --bg-elevated: #262936;
+  --border-subtle: rgba(255, 255, 255, 0.14);
+
+  /* --- Testi --- */
+  --text-primary: #f4f4f8;
+  --text-secondary: #b4b7c9;
+  --text-muted: #7c8098;
+
+  /* --- Palette Principale Brand --- */
+  --brand-cyan: #00e5ff;
+  --brand-magenta: #ff2a85;
+  --brand-gold: #ffb703;
+  --brand-amber: #ff9e00;
+  --brand-acid: #52ff00;
+
+  /* --- 8 Identità Giocatore (Colore + Glow) --- */
+  --p1-color: #00e5ff; /* 1. Electric Cyan - Cuffie */
+  --p2-color: #ff2a85; /* 2. Vivid Magenta - Vinile */
+  --p3-color: #ffb703; /* 3. Golden Amber - Fulmine */
+  --p4-color: #52ff00; /* 4. Acid Green - Microfono */
+  --p5-color: #b565ff; /* 5. Electric Purple - Sintetizzatore */
+  --p6-color: #ff4d4d; /* 6. Coral Red - Nota Musicale */
+  --p7-color: #72efdd; /* 7. Ice Blue - Stella */
+  --p8-color: #ff7b00; /* 8. Bright Orange - Corona */
+
+  /* --- Tipografia --- */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* --- Linee di taglio Print & Play --- */
+  --cut-line: rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================================================
+   MODALITÀ INK-FRIENDLY (Risparmio Inchiostro per Stampa Casalinga)
+   Attivata aggiungendo la classe .ink-friendly al <body>
+   ========================================================================== */
+body.ink-friendly {
+  --bg-asphalt: #ffffff;
+  --bg-midnight: #ffffff;
+  --bg-card: #f8f9fc;
+  --bg-elevated: #eef0f6;
+  --border-subtle: #cbd5e1;
+
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+
+  /* Colori leggermente scuriti per restare leggibili su carta bianca */
+  --brand-cyan: #008ca3;
+  --brand-magenta: #c91863;
+  --brand-gold: #b87b00;
+  --brand-amber: #c26d00;
+  --brand-acid: #2b8a00;
+
+  --p1-color: #008ca3;
+  --p2-color: #c91863;
+  --p3-color: #b87b00;
+  --p4-color: #2b8a00;
+  --p5-color: #7c3aed;
+  --p6-color: #dc2626;
+  --p7-color: #0d9488;
+  --p8-color: #ea580c;
+
+  --cut-line: #94a3b8;
+}
+
+body.ink-friendly .neon-glow {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #0b0c10;
+  color: var(--text-primary);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   BARRA DI CONTROLLO A SCHERMO (Nascosta in stampa)
+   ========================================================================== */
+.pnp-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #120b24;
+  border-bottom: 2px solid var(--brand-cyan);
+  color: #ffffff;
+  font-family: var(--font-display);
+}
+
+.pnp-toolbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.pnp-toolbar-title span {
+  color: #00e5ff;
+}
+
+.pnp-toolbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-pnp {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #00e5ff;
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pnp:hover {
+  background: rgba(0, 229, 255, 0.15);
+}
+
+.btn-pnp.primary {
+  background: #00e5ff;
+  color: #120b24;
+}
+
+.btn-pnp.primary:hover {
+  background: #5ceeff;
+}
+
+/* ==========================================================================
+   IMPAGINAZIONE FOGLI A4 PER STAMPA
+   ========================================================================== */
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  padding: 10mm;
+  background: linear-gradient(160deg, var(--bg-asphalt) 0%, var(--bg-midnight) 100%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body.ink-friendly .a4-page {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 4mm;
+  margin-bottom: 6mm;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 14pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+}
+
+.page-header .subtitle {
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   REGOLAMENTO DI STAMPA (@media print)
+   ========================================================================== */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: none !important;
+  }
+
+  .no-print,
+  .pnp-toolbar {
+    display: none !important;
+  }
+
+  .a4-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .a4-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+
+/* ==========================================================================
+   UTILITY COMPONENTI
+   ========================================================================== */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.cut-guide {
+  border: 1px dashed var(--cut-line);
+}
+
+/* Selettore lingua nella toolbar Print & Play */
+.pnp-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.pnp-lang-btn {
+  background: transparent;
+  border: none;
+  color: #b4b7c9;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pnp-lang-btn:hover {
+  color: #ffffff;
+}
+
+.pnp-lang-btn.active {
+  background: #00e5ff;
+  color: #120b24;
+}

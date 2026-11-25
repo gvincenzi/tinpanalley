@@ -1,7 +1,13 @@
+Ecco il **`README.md`** aggiornato, con l'anteprima affiancata della scatola (`assets/box_cover.png`) e del tabellone (`assets/board.png`) e la struttura del repository allineata.
+
+Puoi copiare e incollare direttamente questo contenuto nel tuo file `README.md`:
+
+```markdown
 # TIN PAN ALLEY: The NoMad Music Moguls
 
 <p align="center">
-  <img src="assets/box_cover.png" alt="Tin Pan Alley Box Cover" width="500"/>
+  <img src="assets/box_cover.png" alt="Tin Pan Alley Box Cover" width="400"/>
+  <img src="assets/board.png" alt="Tin Pan Alley Game Board" width="400"/>
 </p>
 
 <p align="center">
@@ -63,7 +69,9 @@ Toute la partie musicale est orchestrée par **"The Algorhythm"**, une applicati
 ## 🗂️ Struttura del Repository / Structure du Dépôt
 
 ```text
-├── assets/             # Grafica, concept art della scatola e loghi / Visuels et concepts
+├── assets/
+│   ├── box_cover.png   # Concept art della scatola / Visuel de la boîte
+│   └── board.png       # Concept art del tabellone / Visuel du plateau
 ├── rules/              # Regolamenti completi / Livrets de règles complets
 │   ├── regolamento_IT.md
 │   └── reglement_FR.md
@@ -76,3 +84,8 @@ Toute la partie musicale est orchestrée par **"The Algorhythm"**, une applicati
 ## ⚖️ Licenza & Crediti / Licence & Crédits
 * **Game Design & Concept:** Giuseppe Vincenzi
 * Tutti i diritti riservati / Tous droits réservés.
+```
+
+---
+
+Con `README.md`, `regolamento_IT.md`, `reglement_FR.md`, `box_cover.png` e `board.png`, il tuo repository ha già un'impostazione editoriale completa. Quando sei pronto, possiamo passare al design dei componenti Print & Play (Beats, gettoni, schede) oppure all'architettura della Web-App *The Algorhythm*.
