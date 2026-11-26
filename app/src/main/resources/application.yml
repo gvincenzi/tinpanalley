@@ -14,7 +14,6 @@ algorhythm:
   deezer:
     base-url: https://api.deezer.com
     playlists:
-      HITS:
-        id: 656406305
-        label-it: "Natale in Jazz"
-        label-fr: "Noël Jazz"
+     CHRISTMAS1: 656406305
+     CHRISTMAS2: 3862143922
+     CHRISTMAS3: 9609097002

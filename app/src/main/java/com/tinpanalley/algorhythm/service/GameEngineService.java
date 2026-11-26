@@ -26,6 +26,7 @@ public class GameEngineService {
 
         var loaded = musicService.loadCatalog(room.getGenre(), customPlaylist);
         room.setPlaylistTitle(loaded.playlistTitle());
+        room.setPlaylistCoverUrl(loaded.playlistCoverUrl());
         room.getDeck().clear();
         room.getDeck().addAll(loaded.tracks());
 

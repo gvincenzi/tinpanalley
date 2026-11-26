@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -13,6 +16,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.tinpanalley.algorhythm.config.MusicProperties;
 import com.tinpanalley.algorhythm.model.ArtistTrack;
 import com.tinpanalley.algorhythm.model.HostCatalog;
+import com.tinpanalley.algorhythm.model.PlaylistMeta;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class MusicService {
@@ -25,17 +31,56 @@ public class MusicService {
         this.restClient = RestClient.create(musicProperties.getBaseUrl());
     }
 
+    private final Map<String, PlaylistMeta> playlistCache = new ConcurrentHashMap<>();
+
+    @PostConstruct
+    public void preloadPlaylistData() {
+        musicProperties.getPlaylists().forEach((key, id) -> Thread.startVirtualThread(() -> {
+            try {
+                JsonNode root = restClient.get()
+                        .uri("/playlist/{id}", id)
+                        .retrieve()
+                        .body(JsonNode.class);
+                if (root != null) {
+                    String title = !root.path("title").asText("").isBlank() ? root.path("title").asText() : key;
+                    String cover = root.path("picture_medium").asText(root.path("picture").asText(""));
+                    playlistCache.put(key, new PlaylistMeta(title, cover));
+                } else {
+                    playlistCache.put(key, new PlaylistMeta(key, ""));
+                }
+            } catch (Exception e) {
+                playlistCache.put(key, new PlaylistMeta(key, ""));
+            }
+        }));
+    }
+
+    public List<Map<String, String>> getAvailablePlaylists() {
+        return musicProperties.getPlaylists().keySet().stream()
+                .map(key -> {
+                    PlaylistMeta meta = playlistCache.getOrDefault(key, new PlaylistMeta(key, ""));
+                    return Map.of(
+                            "key", key,
+                            "label", meta.title(),
+                            "coverUrl", meta.coverUrl()
+                    );
+                })
+                .toList();
+    }
+
     public HostCatalog loadCatalog(String genreKey, String customPlaylistInput) {
         long playlistId = extractPlaylistId(customPlaylistInput);
+        PlaylistMeta cached = playlistCache.getOrDefault(genreKey, new PlaylistMeta(genreKey, ""));
+
+        String playlistTitle = playlistId <= 0 ? cached.title() : "Custom Playlist";
+        String playlistCover = playlistId <= 0 ? cached.coverUrl() : "";
+
         if (playlistId <= 0) {
             var playlists = musicProperties.getPlaylists();
-            var config = playlists.getOrDefault(genreKey, playlists.get("HITS"));
-            playlistId = config != null ? config.getId() : 3155776842L;
+            playlistId = playlists.getOrDefault(genreKey, playlists.getOrDefault("HITS", 3155776842L));
         }
 
         List<ArtistTrack> catalog = new ArrayList<>();
         Set<String> seenArtists = new HashSet<>();
-        String playlistTitle = genreKey;
 
         try {
             JsonNode root = restClient.get()
@@ -43,49 +88,46 @@ public class MusicService {
                     .retrieve()
                     .body(JsonNode.class);
 
-            if (root.has("title") && !root.path("title").asText().isBlank()) {
-                   playlistTitle = root.path("title").asText();
+            if (root != null) {
+                if (!root.path("title").asText("").isBlank()) {
+                    playlistTitle = root.path("title").asText();
+                }
+                if (!root.path("picture_medium").asText("").isBlank()) {
+                    playlistCover = root.path("picture_medium").asText();
+                }
+
+                JsonNode tracksNode = root.path("tracks").path("data");
+                if (tracksNode.isArray()) {
+                    for (JsonNode item : tracksNode) {
+                        String preview = item.path("preview").asText("");
+                        String artist = item.path("artist").path("name").asText("");
+                        String title = item.path("title_short").asText(item.path("title").asText(""));
+                        String id = item.path("id").asText("");
+                        String cover = item.path("album").path("cover_medium").asText("");
+
+                        if (!preview.isBlank() && !artist.isBlank() && seenArtists.add(artist.toLowerCase())) {
+                            catalog.add(new ArtistTrack(id, artist, title, "", preview, cover));
+                        }
+                    }
+                }
             }
-            JsonNode tracksNode = root.path("tracks").path("data");
-            if (tracksNode.isArray()) {
-            	for (JsonNode item : tracksNode) {
-            		String preview = item.path("preview").asText("");
-	                String artist = item.path("artist").path("name").asText("");
-	                String title = item.path("title_short").asText(item.path("title").asText(""));
-	                String id = item.path("id").asText("");
-	                String cover = item.path("album").path("cover_medium").asText("");
-	
-	                if (!preview.isBlank() && !artist.isBlank() && seenArtists.add(artist.toLowerCase())) {
-	                	String decade = ""; // Verrà calcolata quando è il momento di un LIVE
-	                    catalog.add(new ArtistTrack(id, artist, title, decade, preview, cover));
-	                }
-	            }
-           }
         } catch (Exception e) {
             System.err.println("Errore chiamata Deezer, uso catalogo fallback: " + e.getMessage());
         }
 
         if (catalog.size() < 16) {
             catalog.addAll(getFallbackCatalog());
-            playlistTitle = "Fallback Hits";
+            if (catalog.size() == 16) {
+                playlistTitle = "Fallback Hits";
+                playlistCover = "";
+            }
         }
 
         Collections.shuffle(catalog);
-        return new HostCatalog(playlistTitle, catalog);
+        return new HostCatalog(playlistTitle, playlistCover, catalog);
     }
-    
-    private long extractPlaylistId(String input) {
-        if (input == null || input.isBlank()) return -1;
-        // Cerca "/playlist/123456" oppure un numero puro "123456"
-        var matcher = java.util.regex.Pattern.compile("(?:playlist/)?(\\d{5,})").matcher(input.trim());
-        if (matcher.find()) {
-            try {
-                return Long.parseLong(matcher.group(1));
-            } catch (NumberFormatException ignored) {}
-        }
-        return -1;
-    }
-    
+
+
     public ArtistTrack enrichTrackData(ArtistTrack track) {
         if (track == null || track.id().startsWith("f")) return track;
         try {
@@ -118,6 +160,17 @@ public class MusicService {
             System.err.println("Impossibile arricchire i dati per track " + track.id());
         }
         return track;
+    }
+
+    private long extractPlaylistId(String input) {
+        if (input == null || input.isBlank()) return -1;
+        var matcher = Pattern.compile("(?:playlist/)?(\\d{5,})").matcher(input.trim());
+        if (matcher.find()) {
+            try {
+                return Long.parseLong(matcher.group(1));
+            } catch (NumberFormatException ignored) {}
+        }
+        return -1;
     }
 
     private List<ArtistTrack> getFallbackCatalog() {

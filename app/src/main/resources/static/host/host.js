@@ -16,11 +16,11 @@ function renderPlaylistSelect() {
   const select = document.getElementById('genreSelect');
   if (!select || availablePlaylists.length === 0) return;
   const previous = select.value;
-  select.innerHTML = availablePlaylists.map(p => {
-    const label = currentLang === 'fr' ? p.labelFr : p.labelIt;
-    return `<option value="${p.key}">${escapeHtml(label)}</option>`;
-  }).join('');
+  select.innerHTML = availablePlaylists.map(p =>
+    `<option value="${p.key}">${escapeHtml(p.label)}</option>`
+  ).join('');
   if (previous) select.value = previous;
+  updatePlaylistCoverPreview();
 }
 
 function connectHost() {
@@ -72,6 +72,17 @@ function updateRoomUI(state) {
   document.getElementById('lobbyView').style.display = 'none';
   document.getElementById('gameView').style.display = 'flex';
   document.getElementById('roundBadge').textContent = `🎧 ${state.playlistTitle || ''} • ROUND ${state.currentRound} / ${state.totalRounds}`;
+  
+  const activeCover = document.getElementById('activePlaylistCover');
+  if (activeCover) {
+    if (state.playlistCoverUrl) {
+      activeCover.src = state.playlistCoverUrl;
+      activeCover.style.display = 'block';
+    } else {
+      activeCover.style.display = 'none';
+    }
+  }
+  
   renderActivePhase(state);
 }
 
@@ -280,6 +291,20 @@ function applyLanguageUI() {
   
   renderPlaylistSelect();
 }
+
+function updatePlaylistCoverPreview() {
+  const select = document.getElementById('genreSelect');
+  const img = document.getElementById('playlistCoverPreview');
+  if (!select || !img) return;
+  const found = availablePlaylists.find(p => p.key === select.value);
+  if (found && found.coverUrl) {
+    img.src = found.coverUrl;
+    img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+}
+
 
 function startGame() {
   const genre = document.getElementById('genreSelect').value;

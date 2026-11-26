@@ -15,13 +15,6 @@ import java.util.Map;
 public class MusicProperties {
 
     private String baseUrl = "https://api.deezer.com";
-    private Map<String, PlaylistConfig> playlists = new LinkedHashMap<>();
-
-    @Getter
-    @Setter
-    public static class PlaylistConfig {
-        private long id;
-        private String labelIt;
-        private String labelFr;
-    }
+    private Map<String, Long> playlists = new LinkedHashMap<>();
 }
+

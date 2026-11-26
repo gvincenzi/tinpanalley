@@ -37,6 +37,7 @@ public class GameRoom {
     // --- Dati Catalogo & Aste ---
     @JsonIgnore private final List<ArtistTrack> deck = new ArrayList<>();
     @Setter private String playlistTitle = "";
+    @Setter private String playlistCoverUrl = "";
     @Setter private List<ArtistTrack> currentAuctionItems = new ArrayList<>();
     // playerId -> (trackId -> bidAmount)
     @JsonIgnore private final Map<String, Map<String, Integer>> auctionBids = new HashMap<>();
@@ -98,6 +99,7 @@ public class GameRoom {
         state.put("totalRounds", totalRounds);
         state.put("players", playerList);
         state.put("playlistTitle", playlistTitle);
+        state.put("playlistCoverUrl", playlistCoverUrl);
         state.put("takenColors", getTakenColors());
         state.put("auctionItems", currentAuctionItems);
         state.put("phaseEndsAt", phaseEndsAt);

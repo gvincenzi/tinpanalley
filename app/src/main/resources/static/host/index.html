@@ -16,6 +16,7 @@
         <span id="lblHostTitle">THE ALGORHYTHM // Console Centrale</span>
       </div>
       <div style="display:flex; gap:12px; align-items:center;">
+		<img id="activePlaylistCover" src="" alt="" style="width:32px; height:32px; border-radius:6px; object-fit:cover; display:none; border:1px solid var(--brand-gold);">
         <span id="roundBadge" style="font-family:var(--font-display); color:var(--brand-magenta); font-weight:700;"></span>
         <div class="lang-switch">
           <button class="lang-btn active" id="btn-it" onclick="changeLanguage('it')">IT</button>
@@ -45,7 +46,10 @@
         </div>
         <div class="players-list" id="playersList"></div>
         <div class="lobby-footer" style="gap:12px; flex-wrap:wrap;">
-		  <select id="genreSelect" style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle);"></select>
+			<div style="display:flex; align-items:center; gap:10px;">
+			  <img id="playlistCoverPreview" src="" alt="" style="width:44px; height:44px; border-radius:8px; object-fit:cover; display:none; border:1.5px solid var(--brand-cyan);">
+			  <select id="genreSelect" onchange="updatePlaylistCoverPreview()" style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle);"></select>
+			</div>
 		  <input type="text" id="customPlaylistInput"
 		         placeholder="Oppure incolla URL / ID playlist Deezer..."
 		         style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle); min-width:250px;">
