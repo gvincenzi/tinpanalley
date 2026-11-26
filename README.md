@@ -93,6 +93,61 @@ Toute la partie musicale est orchestrée par **"The Algorhythm"**, une applicati
 
 ---
 
+## 🎯 Intenti del Progetto / Intentions du Projet
+
+**🇮🇹** **Tin Pan Alley** è un progetto hobbistico: **gratuito, open source e senza scopo di lucro**. Nasce per portare sul tavolo l'emozione del music quiz insieme alla strategia della gestione economica, ed è condiviso nella speranza che altri appassionati e designer possano provarlo, giocarlo e contribuire a migliorarlo.
+
+Nessun componente di questo progetto è venduto, né è previsto alcun meccanismo di monetizzazione: nessuna pubblicità, nessun paywall, nessuna sponsorizzazione.
+
+**🇫🇷** **Tin Pan Alley** est un projet amateur : **gratuit, open source et à but non lucratif**. Il est né pour apporter sur la table l'émotion du blind test musical associée à la stratégie d'un jeu de gestion, et est partagé dans l'espoir que d'autres passionnés et créateurs puissent le découvrir, y jouer et contribuer à l'améliorer.
+
+Aucun élément de ce projet n'est vendu, et aucun mécanisme de monétisation n'est prévu : pas de publicité, pas de paywall, pas de sponsoring.
+
+---
+
+## 🎵 Musica e Contenuti di Terze Parti / Musique et Contenus Tiers
+
+**🇮🇹**
+
+- I brani ascoltati durante il gioco sono **anteprime ufficiali di 30 secondi** riprodotte in streaming tramite la **Deezer Developer API**, utilizzata in conformità con i suoi termini d'uso per finalità strettamente **non commerciali** ([developers.deezer.com](https://developers.deezer.com/)).
+- **Nessun file audio è scaricato, salvato o ridistribuito** da questa applicazione: i preview vengono trasmessi in streaming solo durante la partita e non sono accessibili come file.
+- Titoli, nomi di artisti, copertine e tutti i contenuti musicali restano **proprietà esclusiva dei rispettivi titolari di diritti** (etichette, editori, artisti). La licenza open source di questo progetto copre **esclusivamente il codice e i materiali originali**, non i contenuti musicali.
+- Deezer è un marchio di Deezer S.A.; questo progetto non è affiliato, sponsorizzato né approvato da Deezer o da alcun titolare di diritti musicali.
+
+**🇫🇷**
+
+- Les morceaux écoutés pendant la partie sont des **extraits officiels de 30 secondes** diffusés en streaming via la **Deezer Developer API**, utilisée conformément à ses conditions d'utilisation à des fins strictement **non commerciales** ([developers.deezer.com](https://developers.deezer.com/)).
+- **Aucun fichier audio n'est téléchargé, stocké ou redistribué** par cette application : les extraits sont diffusés en streaming uniquement pendant la partie et ne sont pas accessibles comme fichiers.
+- Titres, noms d'artistes, pochettes et tout contenu musical demeurent la **propriété exclusive de leurs titulaires de droits** (labels, éditeurs, artistes). La licence open source de ce projet couvre **exclusivement le code et les documents originaux**, pas les contenus musicaux.
+- Deezer est une marque de Deezer S.A. ; ce projet n'est ni affilié, ni sponsorisé, ni approuvé par Deezer ou par un quelconque titulaire de droits musicaux.
+
+---
+
+## ⚠️ Limiti d'Uso / Limites d'Utilisation
+
+**🇮🇹**
+
+Questo progetto è pensato per l'**uso privato tra amici**, in contesti domestici e non commerciali. In particolare:
+
+- **Eventi pubblici** (club, fiere, serate a pagamento, demo in negozi): la riproduzione di musica in luogo pubblico richiede le licenze previste dalla legge (in Italia SIAE, in Francia SACEM). È responsabilità dell'organizzatore dell'evento, non di questo progetto.
+- **Uso commerciale**: i termini delle API di streaming consentono l'uso solo in ambiente non commerciale. Qualsiasi impiego commerciale della web-app o del gioco esula dai termini di questo progetto e richiederebbe accordi diretti con i titolari dei diritti.
+- **Continuità del servizio**: l'accesso alla Deezer API può essere modificato o revocato dalla piattaforma in qualsiasi momento; la disponibilità della componente musicale non è garantita.
+- **Nessuna garanzia**: il progetto è fornito "così com'è", senza alcuna garanzia, come da licenza open source adottata.
+
+**🇫🇷**
+
+Ce projet est conçu pour un **usage privé entre amis**, dans un cadre domestique et non commercial. En particulier :
+
+- **Événements publics** (clubs, festivals, soirées payantes, démonstrations en boutique) : la diffusion de musique dans un lieu public requiert les licences prévues par la loi (en Italie SIAE, en France SACEM). C'est la responsabilité de l'organisateur de l'événement, pas de ce projet.
+- **Usage commercial** : les conditions des API de streaming autorisent uniquement un usage non commercial. Toute exploitation commerciale de la web-app ou du jeu sort du cadre de ce projet et nécessiterait des accords directs avec les titulaires de droits.
+- **Continuité du service** : l'accès à la Deezer API peut être modifié ou révoqué par la plateforme à tout moment ; la disponibilité de la composante musicale n'est pas garantie.
+- **Aucune garantie** : le projet est fourni « en l'état », sans aucune garantie, conformément à la licence open source adoptée.
+
+---
+
 ## ⚖️ Licenza & Crediti / Licence & Crédits
-* **Game Design & Concept:** Giuseppe Vincenzi
-* Tutti i diritti riservati / Tous droits réservés.
+
+*   **Game Design & Concept:** Giuseppe Vincenzi
+*   **Codice sorgente / Code source:** licenza **MIT** (vedi file [LICENSE](LICENSE))
+*   **Regolamenti e materiali print & play / Règlements et composants print & play:** **CC BY-SA 4.0**
+*   **Esclusione / Exclusion:** i contenuti musicali (brani, anteprime, copertine) trasmessi via Deezer API restano di proprietà dei rispettivi titolari e non sono coperti da queste licenze. / Les contenus musicaux (morceaux, extraits, pochettes) diffusés via la Deezer API demeurent la propriété de leurs titulaires respectifs et ne sont pas couverts par ces licences.
