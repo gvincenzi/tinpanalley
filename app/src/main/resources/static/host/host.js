@@ -71,7 +71,7 @@ function updateRoomUI(state) {
 
   document.getElementById('lobbyView').style.display = 'none';
   document.getElementById('gameView').style.display = 'flex';
-  document.getElementById('roundBadge').textContent = `ROUND ${state.currentRound} / ${state.totalRounds}`;
+  document.getElementById('roundBadge').textContent = `🎧 ${state.playlistTitle || ''} • ROUND ${state.currentRound} / ${state.totalRounds}`;
   renderActivePhase(state);
 }
 
@@ -283,7 +283,8 @@ function applyLanguageUI() {
 
 function startGame() {
   const genre = document.getElementById('genreSelect').value;
-  sendHost('START_GAME', { genre });
+  const customPlaylist = document.getElementById('customPlaylistInput').value.trim();
+  sendHost('START_GAME', { genre, customPlaylist });
 }
 
 function showError(text) {

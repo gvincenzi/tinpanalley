@@ -18,15 +18,16 @@ public class GameEngineService {
         this.fuzzyMatcher = fuzzyMatcher;
     }
 
-    public void startGame(GameRoom room, String genre) {
+    public void startGame(GameRoom room, String genre, String customPlaylist) {
         int count = room.getPlayers().size();
         room.setTotalRounds(count <= 4 ? 3 : 2);
         room.setCurrentRound(1);
         room.setGenre(genre != null ? genre : "HITS");
 
-        List<ArtistTrack> catalog = musicService.loadCatalog(room.getGenre());
+        var loaded = musicService.loadCatalog(room.getGenre(), customPlaylist);
+        room.setPlaylistTitle(loaded.playlistTitle());
         room.getDeck().clear();
-        room.getDeck().addAll(catalog);
+        room.getDeck().addAll(loaded.tracks());
 
         // Distribuisci 4 opzioni univoche per il Draft iniziale a ciascun giocatore
         synchronized (room.getPlayers()) {

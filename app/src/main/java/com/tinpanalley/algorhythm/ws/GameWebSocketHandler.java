@@ -152,7 +152,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
                 return;
             }
             String genre = String.valueOf(payload.getOrDefault("genre", "HITS"));
-            engine.startGame(room, genre);
+            String customPlaylist = payload.get("customPlaylist") != null ? String.valueOf(payload.get("customPlaylist")) : "";
+            engine.startGame(room, genre, customPlaylist);
             for (Player p : room.getPlayers().values()) {
                 send(p.getSession(), WsMessage.of("DRAFT_OPTIONS", Map.of("options", p.getDraftOptions())));
             }

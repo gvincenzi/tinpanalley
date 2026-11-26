@@ -12,6 +12,7 @@ import org.springframework.web.client.RestClient;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tinpanalley.algorhythm.config.MusicProperties;
 import com.tinpanalley.algorhythm.model.ArtistTrack;
+import com.tinpanalley.algorhythm.model.HostCatalog;
 
 @Service
 public class MusicService {
@@ -24,46 +25,67 @@ public class MusicService {
         this.restClient = RestClient.create(musicProperties.getBaseUrl());
     }
 
-    public List<ArtistTrack> loadCatalog(String genreKey) {
-        var playlists = musicProperties.getPlaylists();
-        var config = playlists.getOrDefault(genreKey, playlists.get("HITS"));
-        long playlistId = config != null ? config.getId() : 3155776842L;
+    public HostCatalog loadCatalog(String genreKey, String customPlaylistInput) {
+        long playlistId = extractPlaylistId(customPlaylistInput);
+        if (playlistId <= 0) {
+            var playlists = musicProperties.getPlaylists();
+            var config = playlists.getOrDefault(genreKey, playlists.get("HITS"));
+            playlistId = config != null ? config.getId() : 3155776842L;
+        }
 
         List<ArtistTrack> catalog = new ArrayList<>();
         Set<String> seenArtists = new HashSet<>();
+        String playlistTitle = genreKey;
 
         try {
             JsonNode root = restClient.get()
-                    .uri("/playlist/{id}/tracks?limit=100", playlistId)
+                    .uri("/playlist/{id}?limit=100", playlistId)
                     .retrieve()
                     .body(JsonNode.class);
 
-            if (root != null && root.has("data")) {
-                for (JsonNode item : root.get("data")) {
-                    String preview = item.path("preview").asText("");
-                    String artist = item.path("artist").path("name").asText("");
-                    String title = item.path("title_short").asText(item.path("title").asText(""));
-                    String id = item.path("id").asText("");
-                    String cover = item.path("album").path("cover_medium").asText("");
-
-                    if (!preview.isBlank() && !artist.isBlank() && seenArtists.add(artist.toLowerCase())) {
-                        String decade = ""; // Verrà calcolata quando è il momento di un LIVE
-                        catalog.add(new ArtistTrack(id, artist, title, decade, preview, cover));
-                    }
-                }
+            if (root.has("title") && !root.path("title").asText().isBlank()) {
+                   playlistTitle = root.path("title").asText();
             }
+            JsonNode tracksNode = root.path("tracks").path("data");
+            if (tracksNode.isArray()) {
+            	for (JsonNode item : tracksNode) {
+            		String preview = item.path("preview").asText("");
+	                String artist = item.path("artist").path("name").asText("");
+	                String title = item.path("title_short").asText(item.path("title").asText(""));
+	                String id = item.path("id").asText("");
+	                String cover = item.path("album").path("cover_medium").asText("");
+	
+	                if (!preview.isBlank() && !artist.isBlank() && seenArtists.add(artist.toLowerCase())) {
+	                	String decade = ""; // Verrà calcolata quando è il momento di un LIVE
+	                    catalog.add(new ArtistTrack(id, artist, title, decade, preview, cover));
+	                }
+	            }
+           }
         } catch (Exception e) {
             System.err.println("Errore chiamata Deezer, uso catalogo fallback: " + e.getMessage());
         }
 
         if (catalog.size() < 16) {
             catalog.addAll(getFallbackCatalog());
+            playlistTitle = "Fallback Hits";
         }
 
         Collections.shuffle(catalog);
-        return catalog;
+        return new HostCatalog(playlistTitle, catalog);
     }
-
+    
+    private long extractPlaylistId(String input) {
+        if (input == null || input.isBlank()) return -1;
+        // Cerca "/playlist/123456" oppure un numero puro "123456"
+        var matcher = java.util.regex.Pattern.compile("(?:playlist/)?(\\d{5,})").matcher(input.trim());
+        if (matcher.find()) {
+            try {
+                return Long.parseLong(matcher.group(1));
+            } catch (NumberFormatException ignored) {}
+        }
+        return -1;
+    }
+    
     public ArtistTrack enrichTrackData(ArtistTrack track) {
         if (track == null || track.id().startsWith("f")) return track;
         try {
@@ -97,8 +119,6 @@ public class MusicService {
         }
         return track;
     }
-
-
 
     private List<ArtistTrack> getFallbackCatalog() {
         return new ArrayList<>(List.of(

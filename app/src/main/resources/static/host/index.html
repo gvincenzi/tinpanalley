@@ -45,8 +45,11 @@
         </div>
         <div class="players-list" id="playersList"></div>
         <div class="lobby-footer" style="gap:12px; flex-wrap:wrap;">
-			<select id="genreSelect" style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle);"></select>
-          <button class="btn btn-primary" id="startBtn" onclick="startGame()" disabled>Inizia Partita</button>
+		  <select id="genreSelect" style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle);"></select>
+		  <input type="text" id="customPlaylistInput"
+		         placeholder="Oppure incolla URL / ID playlist Deezer..."
+		         style="padding:10px; border-radius:8px; background:var(--bg-asphalt); color:var(--text-primary); border:1px solid var(--border-subtle); min-width:250px;">
+		  <button class="btn btn-primary" id="startBtn" onclick="startGame()" disabled>Inizia Partita</button>
         </div>
         <span class="hint-text" id="lblHint">Servono almeno 3 giocatori (max 8) per avviare la partita.</span>
       </section>
