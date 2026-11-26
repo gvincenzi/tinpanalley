@@ -66,7 +66,27 @@ const TRANSLATIONS = {
     },
     footer: {
       credit: "<strong>TIN PAN ALLEY: The NoMad Music Moguls</strong> — Ideato e progettato da <strong>Giuseppe Vincenzi</strong>",
-      rights: "Prototipo in sviluppo • Tutti i diritti riservati"
+      rights: "Prototipo in sviluppo • Open Source (MIT & CC BY-SA 4.0) • Uso privato non commerciale"
+    },
+    legal: {
+      title: "Progetto Open Source &amp; <span>Note d'Uso</span>",
+      subtitle: "Trasparenza su licenze, streaming audio e ambito di utilizzo.",
+      c1Tag: "🎯 Intenti",
+      c1Title: "Gratuito &amp; No-Profit",
+      c1Desc: "<strong>Tin Pan Alley</strong> è un progetto hobbistico, gratuito e open source. Nessun componente è in vendita e non è prevista alcuna monetizzazione (niente pubblicità, paywall o sponsor).",
+      c1Li1: "<strong>Codice:</strong> Licenza MIT",
+      c1Li2: "<strong>Regole &amp; Print &amp; Play:</strong> CC BY-SA 4.0",
+      c2Tag: "🎵 Streaming Audio",
+      c2Title: "Deezer API &amp; Diritti",
+      c2Desc: 'L\'app riproduce esclusivamente <strong>anteprime ufficiali di 30 secondi</strong> in streaming tramite <a href="https://developers.deezer.com/" target="_blank" rel="noopener" class="legal-link">Deezer Developer API</a> per finalità non commerciali.',
+      c2Li1: "Nessun file audio viene scaricato, salvato o ridistribuito.",
+      c2Li2: "Brani, titoli e copertine restano proprietà esclusiva dei rispettivi titolari (non inclusi nelle licenze open source).",
+      c3Tag: "⚠️ Limiti d'Uso",
+      c3Title: "Uso Privato &amp; Garanzie",
+      c3Desc: "Pensato esclusivamente per l'<strong>uso privato tra amici</strong> in contesti domestici.",
+      c3Li1: "<strong>Eventi pubblici:</strong> eventuali licenze (es. SIAE / SACEM) sono a carico dell'organizzatore.",
+      c3Li2: "Progetto fornito «così com'è», senza garanzia di continuità delle API esterne.",
+      githubBtn: "Codice su GitHub"
     }
   },
 
@@ -137,7 +157,27 @@ const TRANSLATIONS = {
     },
     footer: {
       credit: "<strong>TIN PAN ALLEY: The NoMad Music Moguls</strong> — Imaginé et conçu par <strong>Giuseppe Vincenzi</strong>",
-      rights: "Prototype en développement • Tous droits réservés"
+      rights: "Prototype en développement • Open Source (MIT & CC BY-SA 4.0) • Usage privé non commercial"
+    },
+    legal: {
+      title: "Projet Open Source &amp; <span>Mentions d'Usage</span>",
+      subtitle: "Transparence sur les licences, le streaming audio et le cadre d'utilisation.",
+      c1Tag: "🎯 Intentions",
+      c1Title: "Gratuit &amp; Non Lucratif",
+      c1Desc: "<strong>Tin Pan Alley</strong> est un projet amateur, gratuit et open source. Aucun élément n'est vendu et aucune monétisation n'est prévue (sans publicité, paywall ni sponsoring).",
+      c1Li1: "<strong>Code source :</strong> Licence MIT",
+      c1Li2: "<strong>Règles &amp; Print &amp; Play :</strong> CC BY-SA 4.0",
+      c2Tag: "🎵 Streaming Audio",
+      c2Title: "Deezer API &amp; Droits",
+      c2Desc: 'L\'application diffuse uniquement des <strong>extraits officiels de 30 secondes</strong> en streaming via la <a href="https://developers.deezer.com/" target="_blank" rel="noopener" class="legal-link">Deezer Developer API</a> à des fins non commerciales.',
+      c2Li1: "Aucun fichier audio n'est téléchargé, stocké ou redistribué.",
+      c2Li2: "Morceaux, titres et pochettes restent la propriété exclusive de leurs titulaires de droits (exclus des licences open source).",
+      c3Tag: "⚠️ Limites d'Usage",
+      c3Title: "Usage Privé &amp; Garanties",
+      c3Desc: "Conçu exclusivement pour un <strong>usage privé entre amis</strong> dans un cadre domestique.",
+      c3Li1: "<strong>Événements publics :</strong> les licences requises (ex. SIAE / SACEM) relèvent de la responsabilité de l'organisateur.",
+      c3Li2: "Projet fourni « en l'état », sans garantie de disponibilité continue des API externes.",
+      githubBtn: "Code sur GitHub"
     }
   }
 };

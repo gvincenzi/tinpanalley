@@ -634,3 +634,36 @@ body {
   color: #090a0f;
   box-shadow: 0 0 12px rgba(0, 229, 255, 0.45);
 }
+
+/* --- SEZIONE NOTE LEGALI & INTENTI --- */
+.legal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-list {
+  margin-top: 6px;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.legal-list strong {
+  color: var(--text-primary);
+}
+
+.legal-link {
+  color: var(--brand-cyan);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--brand-cyan);
+}
+
+.legal-link:hover {
+  color: #ffffff;
+  border-bottom-style: solid;
+}
