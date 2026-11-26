@@ -7,3 +7,12 @@ spring:
   threads:
     virtual:
       enabled: true
+
+algorhythm:
+  deezer:
+    base-url: https://api.deezer.com
+    playlists:
+      HITS:
+        id: 656406305
+        label-it: "Natale in Jazz"
+        label-fr: "Noël Jazz"

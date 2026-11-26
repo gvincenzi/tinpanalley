@@ -1,6 +1,7 @@
 package com.tinpanalley.algorhythm.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tinpanalley.algorhythm.config.MusicProperties;
 import com.tinpanalley.algorhythm.model.ArtistTrack;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -10,22 +11,19 @@ import java.util.*;
 @Service
 public class MusicService {
 
-    private final RestClient restClient = RestClient.create("https://api.deezer.com");
+    private final MusicProperties musicProperties;
+    private final RestClient restClient;
 
-    // ID di playlist ufficiali Deezer per i vari temi (modificabili o espandibili)
-    private static final Map<String, Long> PLAYLIST_IDS = Map.of(
-            "HITS", 3155776842L,      // Top Worldwide / Hits
-            "ROCK", 1306931615L,      // Classic & Modern Rock
-            "80S_90S", 1479458365L,   // 80s & 90s Classics
-            "ITALY", 1111142221L,     // Pop & Hit Italiane
-            "FRANCE", 1116187241L     // Chanson & Pop Française
-    );
+    public MusicService(MusicProperties musicProperties) {
+        this.musicProperties = musicProperties;
+        this.restClient = RestClient.create(musicProperties.getBaseUrl());
+    }
 
-    /**
-     * Carica un pool di artisti unici con preview MP3 valida da Deezer.
-     */
     public List<ArtistTrack> loadCatalog(String genreKey) {
-        long playlistId = PLAYLIST_IDS.getOrDefault(genreKey, 3155776842L);
+        var playlists = musicProperties.getPlaylists();
+        var config = playlists.getOrDefault(genreKey, playlists.get("HITS"));
+        long playlistId = config != null ? config.getId() : 3155776842L;
+
         List<ArtistTrack> catalog = new ArrayList<>();
         Set<String> seenArtists = new HashSet<>();
 
@@ -43,9 +41,7 @@ public class MusicService {
                     String id = item.path("id").asText("");
                     String cover = item.path("album").path("cover_medium").asText("");
 
-                    // Escludi brani senza preview 30s e garantisci 1 brano per artista unico
                     if (!preview.isBlank() && !artist.isBlank() && seenArtists.add(artist.toLowerCase())) {
-                        // Nota: Deezer playlist endpoint non include l'anno esatto; usiamo una stima o la chiamata album in seguito
                         String decade = inferDecade(genreKey);
                         catalog.add(new ArtistTrack(id, artist, title, decade, preview, cover));
                     }
@@ -55,7 +51,6 @@ public class MusicService {
             System.err.println("Errore chiamata Deezer, uso catalogo fallback: " + e.getMessage());
         }
 
-        // Se Deezer non risponde o ha pochi brani, usa il fallback di sicurezza
         if (catalog.size() < 16) {
             catalog.addAll(getFallbackCatalog());
         }
@@ -92,4 +87,3 @@ public class MusicService {
         ));
     }
 }
-

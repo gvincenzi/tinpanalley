@@ -1,5 +1,27 @@
 let ws, roomCode = null, currentLang = 'it', qrInstance = null, timerInterval = null;
 let lastAudioUrl = null;
+let availablePlaylists = [];
+
+async function loadPlaylists() {
+  try {
+    const res = await fetch('/api/playlists');
+    availablePlaylists = await res.json();
+    renderPlaylistSelect();
+  } catch (e) {
+    console.error('Errore caricamento playlist:', e);
+  }
+}
+
+function renderPlaylistSelect() {
+  const select = document.getElementById('genreSelect');
+  if (!select || availablePlaylists.length === 0) return;
+  const previous = select.value;
+  select.innerHTML = availablePlaylists.map(p => {
+    const label = currentLang === 'fr' ? p.labelFr : p.labelIt;
+    return `<option value="${p.key}">${escapeHtml(label)}</option>`;
+  }).join('');
+  if (previous) select.value = previous;
+}
 
 function connectHost() {
   const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -247,6 +269,8 @@ function applyLanguageUI() {
   document.getElementById('lblPlayers').textContent = t.playersConnected;
   document.getElementById('lblHint').textContent = t.minPlayersHint;
   document.getElementById('startBtn').textContent = t.startGame;
+  
+  renderPlaylistSelect();
 }
 
 function startGame() {
@@ -266,3 +290,4 @@ function escapeHtml(str) {
 }
 
 connectHost();
+loadPlaylists();
