@@ -72,6 +72,16 @@ const PNP_TRANSLATIONS = {
       slot2: "Gettone<br>Club 2",
       awardsNotes: "<strong>NoMad Music Awards (Finale):</strong><br>• Punti blind test raddoppiati (<strong>+4/+6 PR</strong>).<br>• Premio della Critica: <strong>+10 PR</strong>.<br><br><strong>Bonus di Fine Partita:</strong><br>• <strong>+1 PR</strong> ogni Club controllato.<br>• <strong>+3 PR</strong> per Monopolio Distretto (2 Club).<br>• <strong>+1 PR</strong> ogni <strong>500 BT</strong> residui.",
       footerText: '<span class="freelance-badge">SCOUT FREELANCE (Salvagente):</span> se non puoi pagare, ricevi <strong>1.000 BT</strong> cedendo il tuo artista top (o <strong>-5 PR</strong> finali) e ottieni <strong>+1 PR</strong> extra nei live del Round.'
+    },
+    p4: {
+      docTitle: "Tin Pan Alley — Print & Play: Tabellone (4× A4)",
+      toolbar: "// Print &amp; Play — Tabellone (38 × 38 cm)",
+      headerTitle: "TIN PAN ALLEY — Tabellone di NoMad",
+      q1: "Quadrante 1/4 (Alto-Sinistra)",
+      q2: "Quadrante 2/4 (Alto-Destra)",
+      q3: "Quadrante 3/4 (Basso-Sinistra)",
+      q4: "Quadrante 4/4 (Basso-Destra)",
+      assembly: "Ritaglia lungo il bordo tratteggiato e affianca i 4 quadranti per formare il tabellone <strong>38 × 38 cm</strong> (anelli club Ø 25 mm)."
     }
   },
 
@@ -148,6 +158,16 @@ const PNP_TRANSLATIONS = {
       slot2: "Jeton<br>Club 2",
       awardsNotes: "<strong>NoMad Music Awards (Finale) :</strong><br>• Points du blind test doublés (<strong>+4/+6 PR</strong>).<br>• Prix de la Critique : <strong>+10 PR</strong>.<br><br><strong>Bonus de Fin de Partie :</strong><br>• <strong>+1 PR</strong> par Club contrôlé.<br>• <strong>+3 PR</strong> par Monopole de District (2 Clubs).<br>• <strong>+1 PR</strong> par tranche de <strong>500 BT</strong> restants.",
       footerText: '<span class="freelance-badge">SCOUT FREELANCE (Sauvegarde) :</span> si vous ne pouvez pas payer, recevez <strong>1 000 BT</strong> en cédant votre meilleur artiste (ou <strong>-5 PR</strong> finaux) et gagnez <strong>+1 PR</strong> bonus sur les lives du Round.'
+    },
+    p4: {
+      docTitle: "Tin Pan Alley — Print & Play : Plateau (4× A4)",
+      toolbar: "// Print &amp; Play — Plateau (38 × 38 cm)",
+      headerTitle: "TIN PAN ALLEY — Plateau de NoMad",
+      q1: "Quadrant 1/4 (Haut-Gauche)",
+      q2: "Quadrant 2/4 (Haut-Droite)",
+      q3: "Quadrant 3/4 (Bas-Gauche)",
+      q4: "Quadrant 4/4 (Bas-Droite)",
+      assembly: "Découpez le long des pointillés et assemblez les 4 quadrants pour former le plateau <strong>38 × 38 cm</strong> (emplacements Ø 25 mm)."
     }
   }
 };

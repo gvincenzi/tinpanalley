@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin Pan Alley — Print & Play: Tabellone (4× A4)</title>
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/tabellone.css">
+</head>
+<body>
+
+  <div class="pnp-toolbar no-print">
+    <div class="pnp-toolbar-title">
+      TIN PAN ALLEY <span data-i18n="p4.toolbar">// Print &amp; Play — Tabellone (38 × 38 cm)</span>
+    </div>
+    <div class="pnp-toolbar-actions">
+      <div class="pnp-lang-switch">
+        <button class="pnp-lang-btn" id="btn-it" onclick="setPnpLanguage('it', 'p4')">IT</button>
+        <button class="pnp-lang-btn" id="btn-fr" onclick="setPnpLanguage('fr', 'p4')">FR</button>
+      </div>
+      <button class="btn-pnp" id="toggleInkBtn" onclick="toggleInkMode()">
+        Modalità Ink-Friendly
+      </button>
+      <button class="btn-pnp primary" data-i18n="common.print4" onclick="window.print()">
+        Stampa / Salva PDF (4 Fogli A4)
+      </button>
+    </div>
+  </div>
+
+  <div id="pagesContainer"></div>
+
+  <script src="js/pnp-translations.js"></script>
+  <script>
+    const QUADRANTS = [
+      { cls: 'q-tl', key: 'q1', num: '1/4' },
+      { cls: 'q-tr', key: 'q2', num: '2/4' },
+      { cls: 'q-bl', key: 'q3', num: '3/4' },
+      { cls: 'q-br', key: 'q4', num: '4/4' }
+    ];
+
+    const pagesContainer = document.getElementById('pagesContainer');
+
+    QUADRANTS.forEach(q => {
+      const main = document.createElement('main');
+      main.className = 'a4-page';
+      main.innerHTML = `
+        <header class="page-header">
+          <h1 data-i18n="p4.headerTitle">TIN PAN ALLEY — Tabellone di NoMad</h1>
+          <span class="subtitle"><span data-i18n="p4.${q.key}">Quadrante ${q.num}</span> • 190 × 190 mm (Scala 100%)</span>
+        </header>
+        <div class="quadrant-wrapper">
+          <div class="quadrant-frame ${q.cls}">
+            <img src="../assets/board.png" alt="Tabellone Tin Pan Alley" class="board-img img-dark">
+            <img src="../assets/board_ink.png" alt="Tabellone Tin Pan Alley Ink-Friendly" class="board-img img-ink">
+          </div>
+          <p class="assembly-note" data-i18n="p4.assembly">
+            Ritaglia lungo il bordo tratteggiato e affianca i 4 quadranti per formare il tabellone <strong>38 × 38 cm</strong>.
+          </p>
+        </div>
+      `;
+      pagesContainer.appendChild(main);
+    });
+
+    initPnpLanguage('p4');
+  </script>
+</body>
+</html>

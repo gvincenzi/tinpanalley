@@ -35,7 +35,7 @@ const TRANSLATIONS = {
     board: {
       title: "I 5 Distretti e i 10 Club di NoMad",
       desc: "I giocatori si spostano lungo un anello urbano per acquisire le licenze dei club più ambiti, incassare 300 BT di royalty dai concerti altrui e puntare al monopolio di quartiere.",
-      cta: "Scarica Tabellone (PNG)"
+      cta: "Apri &amp; Stampa Tabellone (4× A4)"
     },
     downloads: {
       title: "Materiali <span>Print &amp; Play</span>",
@@ -49,6 +49,9 @@ const TRANSLATIONS = {
       d3Meta: "Foglio A4 • 2 Schede A5",
       d3Title: "Schede Ufficio Management",
       d3Desc: "Riferimento rapido al tavolo per ogni giocatore: azioni, costi, tabella Trendsetter, scommesse e alloggiamento gettoni.",
+      d4Meta: "Fogli A4 • 4 Pagine",
+      d4Title: "Tabellone di NoMad (38 × 38 cm)",
+      d4Desc: "Mappa vettoriale divisa in 4 quadranti A4 con modalità Ink-Friendly e slot esatti da 25 mm per i gettoni.",
       btnPrint: "Apri &amp; Stampa (HTML / PDF)",
       rMeta: "Documentazione Ufficiale • IT / FR",
       rTitle: "Regolamento Completo",
@@ -103,7 +106,7 @@ const TRANSLATIONS = {
     board: {
       title: "Les 5 Districts et les 10 Clubs de NoMad",
       desc: "Déplacez votre pion sur la boucle urbaine pour acquérir les licences des salles les plus prisées, encaisser 300 BT de royalties sur les concerts adverses et viser le monopole de quartier.",
-      cta: "Télécharger le Plateau (PNG)"
+      cta: "Ouvrir &amp; Imprimer le Plateau (4× A4)"
     },
     downloads: {
       title: "Matériel <span>Print &amp; Play</span>",
@@ -117,6 +120,9 @@ const TRANSLATIONS = {
       d3Meta: "Feuille A4 • 2 Fiches A5",
       d3Title: "Fiches Bureau de Management",
       d3Desc: "Aide de jeu individuelle : actions, coûts, tableau Trendsetter, paris et emplacements dédiés aux jetons de club.",
+      d4Meta: "Feuilles A4 • 4 Pages",
+      d4Title: "Plateau de NoMad (38 × 38 cm)",
+      d4Desc: "Carte vectorielle divisée en 4 quadrants A4 avec mode Ink-Friendly et emplacements exacts de 25 mm pour les jetons.",
       btnPrint: "Ouvrir &amp; Imprimer (HTML / PDF)",
       rMeta: "Documentation Officielle • IT / FR",
       rTitle: "Règlement Complet",

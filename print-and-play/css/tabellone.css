@@ -1,0 +1,51 @@
+/* ==========================================================================
+   TIN PAN ALLEY — Stili Tabellone PNG su 4 Quadranti A4 (380 × 380 mm)
+   Richiede: design-system.css
+   ========================================================================== */
+
+.quadrant-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.quadrant-frame {
+  width: 190mm;
+  height: 190mm;
+  position: relative;
+  overflow: hidden;
+  border: 1px dashed var(--cut-line);
+  background: #120b24;
+}
+
+.board-img {
+  width: 380mm;
+  height: 380mm;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  object-fit: cover;
+}
+
+.q-tl .board-img { top: 0;       left: 0; }
+.q-tr .board-img { top: 0;       left: -190mm; }
+.q-bl .board-img { top: -190mm;  left: 0; }
+.q-br .board-img { top: -190mm;  left: -190mm; }
+
+.img-ink { display: none; }
+body.ink-friendly .img-dark { display: none; }
+body.ink-friendly .img-ink  { display: block; }
+
+.assembly-note {
+  margin-top: 6mm;
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.assembly-note strong {
+  color: var(--brand-cyan);
+}
