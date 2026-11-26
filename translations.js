@@ -55,8 +55,10 @@ const TRANSLATIONS = {
       rDesc: "Consulta le regole aggiornate (v1.0) in Italiano o in Francese, complete di esempi, formule di punteggio e spareggi."
     },
     webapp: {
-      title: "Prossimamente: <span>The Algorhythm</span> Web-App",
-      desc: 'Il modulo digitale per gestire le aste al buio simultanee, l\'integrazione streaming con Spotify / Deezer e il calcolo automatico dei punteggi in tempo reale è attualmente in fase di progettazione nella cartella <code>/app</code>.',
+      title: "Gioca ora con <span>The Algorhythm</span>",
+      desc: "Avvia la Console Centrale sul tablet o PC collegato alla cassa audio per generare il QR Code della partita, oppure entra direttamente da smartphone come giocatore.",
+      ctaHost: "▶ Avvia Console Centrale (Host)",
+      ctaPlayer: "📱 Entra come Giocatore",
       cta: "Scarica Cover Scatola (PNG)"
     },
     footer: {
@@ -121,8 +123,10 @@ const TRANSLATIONS = {
       rDesc: "Consultez les règles complètes (v1.0) en Français ou en Italien, incluant les exemples, les barèmes de points et les départages."
     },
     webapp: {
-      title: "Prochainement : l'App Web <span>The Algorhythm</span>",
-      desc: 'Le module numérique gérant les enchères secrètes simultanées, l\'intégration streaming Spotify / Deezer et le calcul automatique des scores en direct est en cours de conception dans le dossier <code>/app</code>.',
+      title: "Jouez maintenant avec <span>The Algorhythm</span>",
+      desc: "Lancez la Console Centrale sur la tablette ou le PC relié à l'enceinte audio pour générer le QR Code de la partie, ou rejoignez directement depuis votre smartphone.",
+      ctaHost: "▶ Lancer la Console Centrale (Hôte)",
+      ctaPlayer: "📱 Rejoindre en tant que Joueur",
       cta: "Télécharger la Jaquette (PNG)"
     },
     footer: {

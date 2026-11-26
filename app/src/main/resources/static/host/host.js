@@ -4,7 +4,7 @@ let availablePlaylists = [];
 
 async function loadPlaylists() {
   try {
-    const res = await fetch('/api/playlists');
+    const res = await fetch('/algorhythm/api/playlists');
     availablePlaylists = await res.json();
     renderPlaylistSelect();
   } catch (e) {
@@ -25,7 +25,7 @@ function renderPlaylistSelect() {
 
 function connectHost() {
   const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-  ws = new WebSocket(`${protocol}//${location.host}/ws`);
+  ws = new WebSocket(`${protocol}//${location.host}/algorhythm/ws`);
   ws.onopen = () => ws.send(JSON.stringify({ type: 'CREATE_ROOM', payload: { language: currentLang } }));
   ws.onmessage = (e) => {
     const msg = JSON.parse(e.data);
@@ -47,7 +47,7 @@ function updateRoomUI(state) {
   applyLanguageUI();
 
   document.getElementById('roomCode').textContent = roomCode;
-  const playerUrl = `${location.origin}/player?room=${roomCode}`;
+  const playerUrl = `${location.origin}/algorhythm/player?room=${roomCode}`;
   document.getElementById('joinUrl').textContent = playerUrl;
 
   if (!qrInstance) {

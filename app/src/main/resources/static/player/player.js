@@ -12,7 +12,7 @@ function init() {
 
 function connectWebSocket() {
   const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-  ws = new WebSocket(`${protocol}//${location.host}/ws`);
+  ws = new WebSocket(`${protocol}//${location.host}/algorhythm/ws`);
   ws.onopen = () => {
     if (myPlayerId && currentRoomCode) {
       isAutoReconnecting = true;
