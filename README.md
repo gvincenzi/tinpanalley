@@ -1,8 +1,8 @@
 # TIN PAN ALLEY: The NoMad Music Moguls
 
 <p align="center">
-  <img src="assets/box_cover.png" alt="Tin Pan Alley Box Cover" width="400"/>
-  <img src="assets/board.png" alt="Tin Pan Alley Game Board" width="400"/>
+  <img src="assets/box_cover.png" alt="Tin Pan Alley Box Cover" width="380"/>
+  <img src="assets/board.png" alt="Tin Pan Alley Game Board" width="380"/>
 </p>
 
 <p align="center">
@@ -12,7 +12,9 @@
 </p>
 
 <p align="center">
-  <a href="#italiano">🇮🇹 Italiano</a> • <a href="#français">🇫🇷 Français</a>
+  <a href="https://inmediart.ovh/algorhythm/"><strong>▶ Avvia The Algorhythm (Web-App)</strong></a> •
+  <a href="#italiano">🇮🇹 Italiano</a> •
+  <a href="#français">🇫🇷 Français</a>
 </p>
 
 ---
@@ -27,15 +29,17 @@ Nel leggendario quartiere di **NoMad (Manhattan)**, dove a cavallo del Novecento
 
 **Tin Pan Alley** è un gioco da tavolo moderno e ibrido che fonde **strategia manageriale da tavolo** (controllo dell'area, aste al buio, gestione della liquidità in **Beats - BT**) ed **esperienza party/trivia musicale dal vivo**.
 
-Il gioco è orchestrato da **"The Algorhythm"**, una Web-App intelligente che si interfaccia direttamente con gli account streaming (Spotify / Deezer) dei giocatori. L'IA funge da DJ neutrale, gestisce il cronometro e convalida le risposte dei blind test tramite correttore intelligente (*Fuzzy Matching*): **nessun giocatore deve sacrificarsi nel ruolo di moderatore, tutti giocano al 100% del tempo.**
+Il gioco è orchestrato da **"The Algorhythm"**, una Web-App in **Java 21 / Spring Boot** che si interfaccia con le API di **Deezer** (playlist preconfigurate o playlist personalizzate incollate al volo dall'Host). L'IA funge da DJ neutrale, gestisce il cronometro e convalida le risposte dei blind test tramite correttore intelligente (*Fuzzy Matching*): **nessun giocatore deve sacrificarsi nel ruolo di moderatore, tutti giocano al 100% del tempo.**
 
 ### Caratteristiche Principali
 * **Zero Tempi Morti (No Downtime):** Tutti i giocatori partecipano contemporaneamente a ogni brano musicale digitando le risposte sul proprio smartphone.
 * **La Formula "Trendsetter":** Guadagni se proponi brani raffinati che solo una parte del tavolo sa riconoscere. Troppo facile? Guadagni zero. Troppo difficile? Locale deserto!
 * **Economia Dinamica in Beats (BT):** Acquisisci licenze sui club di NoMad (come *Amplifier* o *Prism*), incassa royalty dai rivali e punta sulla *Scommessa sulla Hit*.
 * **Nessuna Eliminazione:** Il sistema dello *Scout Freelance* permette a chi va al verde di restare in gara fino al festival finale dei **NoMad Music Awards**.
+* **Kit Print & Play Completo:** Tutti i componenti fisici (pedine, gettoni da 25 mm, banconote, schede e tabellone 38×38 cm diviso in 4× A4) includono la modalità **Ink-Friendly** per la stampa casalinga.
 
-📖 **[LEGGI IL REGOLAMENTO COMPLETO IN ITALIANO](rules/regolamento_IT.md)**
+📖 **[LEGGI IL REGOLAMENTO COMPLETO IN ITALIANO](rules/regolamento_IT.md)**  
+🎧 **[APRI LA WEB-APP THE ALGORHYTHM](https://inmediart.ovh/algorhythm/)**
 
 ---
 
@@ -49,15 +53,17 @@ Dans le quartier emblématique de **NoMad à Manhattan**, berceau historique de 
 
 **Tin Pan Alley** est un jeu de société hybride et contemporain combinant **gestion stratégique sur plateau** (contrôle de zones, enchères secrètes, investissements en **Beats - BT**) et **blind tests musicaux en streaming réel**.
 
-Toute la partie musicale est orchestrée par **"The Algorhythm"**, une application web qui connecte directement le jeu aux comptes streaming des joueurs (Spotify / Deezer). L'IA agit comme DJ impartial, chronométreur et arbitre grâce à un correcteur intelligent (*Fuzzy Matching*) : **aucun joueur n'est contraint de jouer le rôle passif de maître de jeu ou DJ ; tout le monde participe activement.**
+Toute la partie musicale est orchestrée par **"The Algorhythm"**, une application web en **Java 21 / Spring Boot** connectée à l'API **Deezer** (playlists thématiques ou playlist personnalisée collée à la volée par l'hôte). L'IA agit comme DJ impartial, chronométreur et arbitre grâce à un correcteur intelligent (*Fuzzy Matching*) : **aucun joueur n'est contraint de jouer le rôle passif de maître de jeu ou DJ ; tout le monde participe activement.**
 
 ### Points Forts
 * **Zéro Temps Mort :** Tous les participants jouent simultanément sur chaque morceau via leur smartphone.
 * **Le Dilemme du "Trendsetter" :** Pour maximiser vos revenus lors de vos soirées club, choisissez des artistes pointus mais accessibles. Un titre trop évident ou trop obscur ne vous rapportera rien !
 * **Économie & Contrôle de Quartier :** Prenez le contrôle des clubs phares de NoMad (*Amplifier*, *Prism*...), encaissez les royalties de vos rivaux et pariez sur les hits en direct.
 * **Aucune Élimination :** Le statut de *Scout Freelance* protège les joueurs en difficulté financière et garantit une course au score ouverte jusqu'au gala final des **NoMad Music Awards**.
+* **Kit Print & Play Complet :** Tous les éléments physiques (pions, jetons 25 mm, billets, fiches et plateau 38×38 cm en 4× A4) disposent d'un mode **Ink-Friendly** pour l'impression maison.
 
-📖 **[LIRE LE RÈGLEMENT COMPLET EN FRANÇAIS](rules/reglement_FR.md)**
+📖 **[LIRE LE RÈGLEMENT COMPLET EN FRANÇAIS](rules/reglement_FR.md)**  
+🎧 **[OUVRIR L'APP WEB THE ALGORHYTHM](https://inmediart.ovh/algorhythm/)**
 
 ---
 
@@ -65,13 +71,24 @@ Toute la partie musicale est orchestrée par **"The Algorhythm"**, une applicati
 
 ```text
 ├── assets/
-│   ├── box_cover.png   # Concept art della scatola / Visuel de la boîte
-│   └── board.png       # Concept art del tabellone / Visuel du plateau
-├── rules/              # Regolamenti completi / Livrets de règles complets
+│   ├── box_cover.png           # Concept art della scatola / Visuel de la boîte
+│   ├── board.png               # Tabellone Notturno / Plateau Nocturne
+│   └── board_ink.png           # Tabellone Ink-Friendly / Plateau Ink-Friendly
+├── print-and-play/             # Componenti stampabili A4 (IT / FR + Ink-Friendly)
+│   ├── 01_pedine_e_gettoni.html
+│   ├── 02_beats_banconote.html
+│   ├── 03_schede_management.html
+│   ├── 04_tabellone.html
+│   ├── css/
+│   └── js/
+├── rules/                      # Regolamenti completi / Livrets de règles complets
 │   ├── regolamento_IT.md
 │   └── reglement_FR.md
-├── app/                # Codice sorgente della Web-App (The Algorhythm) / Code de l'App
-└── README.md           # Questo file / Ce fichier
+├── app/                        # Backend Java 21 / Spring Boot + WebSocket (The Algorhythm)
+├── index.html                  # Landing page bilingue (IT / FR)
+├── landing.css
+├── translations.js
+└── README.md                   # Questo file / Ce fichier
 ```
 
 ---
