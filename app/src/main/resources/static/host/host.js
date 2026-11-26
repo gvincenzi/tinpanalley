@@ -128,11 +128,15 @@ function renderActivePhase(state) {
     if (state.lastLiveSummary) {
       audioEl.pause();
       const s = state.lastLiveSummary;
+	  const coverHtml = s.coverUrl
+	    ? `<img src="${s.coverUrl}" alt="Cover" style="width:160px; height:160px; border-radius:12px; border:2px solid var(--brand-gold); margin-bottom:12px; box-shadow:0 8px 24px rgba(0,0,0,0.5);">`
+	    : '';
       const rows = (s.results || []).map(r =>
         `<div style="padding:8px; border-bottom:1px solid var(--border-subtle);">${escapeHtml(r.name)}: ${r.okArtist ? '🎤' : ''} ${r.okTitle ? '🎵' : ''} +${r.prGained} PR ${r.btWon ? `(+${r.btWon} BT)` : ''}</div>`
       ).join('');
       content.innerHTML = `
-        <h3 style="color:var(--brand-gold); font-size:1.5rem;">${escapeHtml(s.artist)} — "${escapeHtml(s.title)}"</h3>
+	    ${coverHtml}
+	    <h3 style="color:var(--brand-gold); font-size:1.5rem;">${escapeHtml(s.artist)} — "${escapeHtml(s.title)}"</h3>
         <p style="color:var(--brand-cyan); margin:10px 0;">Esito: <strong>${s.tier}</strong> (+${s.orgBt} BT, +${s.orgPr} PR all'organizzatore)</p>
         <div style="max-width:460px; margin:16px auto; text-align:left;">${rows}</div>
         <button class="btn btn-primary" onclick="sendHost('BACK_TO_BOARD')">Torna al Tabellone</button>
@@ -164,12 +168,16 @@ function renderActivePhase(state) {
       if (state.lastAwardSummary) {
         audioEl.pause();
         const s = state.lastAwardSummary;
+		const coverHtml = s.coverUrl
+		  ? `<img src="${s.coverUrl}" alt="Cover" style="width:160px; height:160px; border-radius:12px; border:2px solid var(--brand-gold); margin-bottom:12px; box-shadow:0 8px 24px rgba(0,0,0,0.5);">`
+		  : '';
         const rows = (s.results || []).map(r =>
           `<div style="padding:8px; border-bottom:1px solid var(--border-subtle);">${escapeHtml(r.name)}: ${r.okArtist ? '🎤' : ''} ${r.okTitle ? '🎵' : ''} +${r.prGained} PR</div>`
         ).join('');
         const isLast = num >= state.awardPlaybackTotal;
         content.innerHTML = `
-          <h3 style="color:var(--brand-gold); font-size:1.6rem;">${escapeHtml(s.artist)} — "${escapeHtml(s.title)}"</h3>
+		  ${coverHtml}
+		  <h3 style="color:var(--brand-gold); font-size:1.6rem;">${escapeHtml(s.artist)} — "${escapeHtml(s.title)}"</h3>
           <p style="color:var(--brand-cyan); margin:8px 0;">Brano presentato da: <strong>${escapeHtml(s.ownerName)}</strong></p>
           <div style="max-width:460px; margin:16px auto; text-align:left;">${rows}</div>
           <button class="btn btn-primary" onclick="sendHost('NEXT_AWARD_TRACK')">

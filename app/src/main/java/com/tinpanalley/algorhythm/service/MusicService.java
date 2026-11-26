@@ -1,12 +1,17 @@
 package com.tinpanalley.algorhythm.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.tinpanalley.algorhythm.config.MusicProperties;
-import com.tinpanalley.algorhythm.model.ArtistTrack;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import java.util.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.tinpanalley.algorhythm.config.MusicProperties;
+import com.tinpanalley.algorhythm.model.ArtistTrack;
 
 @Service
 public class MusicService {
@@ -42,7 +47,7 @@ public class MusicService {
                     String cover = item.path("album").path("cover_medium").asText("");
 
                     if (!preview.isBlank() && !artist.isBlank() && seenArtists.add(artist.toLowerCase())) {
-                        String decade = inferDecade(genreKey);
+                        String decade = ""; // Verrà calcolata quando è il momento di un LIVE
                         catalog.add(new ArtistTrack(id, artist, title, decade, preview, cover));
                     }
                 }
@@ -59,12 +64,41 @@ public class MusicService {
         return catalog;
     }
 
-    private String inferDecade(String genreKey) {
-        return switch (genreKey) {
-            case "80S_90S" -> "1980";
-            default -> "2010";
-        };
+    public ArtistTrack enrichTrackData(ArtistTrack track) {
+        if (track == null || track.id().startsWith("f")) return track;
+        try {
+            JsonNode detail = restClient.get()
+                    .uri("/track/{id}", track.id())
+                    .retrieve()
+                    .body(JsonNode.class);
+
+            if (detail != null) {
+                String decade = track.decade();
+                String date = detail.path("release_date").asText("");
+                if (date.length() >= 4) {
+                    int year = Integer.parseInt(date.substring(0, 4));
+                    decade = String.valueOf((year / 10) * 10);
+                }
+
+                String cover = detail.path("album").path("cover_big")
+                        .asText(detail.path("album").path("cover_medium").asText(track.coverUrl()));
+
+                return new ArtistTrack(
+                        track.id(),
+                        track.artist(),
+                        track.title(),
+                        decade,
+                        track.previewUrl(),
+                        cover
+                );
+            }
+        } catch (Exception e) {
+            System.err.println("Impossibile arricchire i dati per track " + track.id());
+        }
+        return track;
     }
+
+
 
     private List<ArtistTrack> getFallbackCatalog() {
         return new ArrayList<>(List.of(

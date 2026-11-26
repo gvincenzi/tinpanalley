@@ -193,12 +193,7 @@ function renderLiveStage(room, me) {
       <h3>Indovina il brano!</h3>
       <input id="ansArtist" class="input-field" placeholder="Artista">
       <input id="ansTitle" class="input-field" placeholder="Titolo canzone">
-      <select id="ansDecade" class="input-field">
-        <option value="">Decennio (solo consolazione)</option>
-        <option value="1970">Anni '70</option><option value="1980">Anni '80</option>
-        <option value="1990">Anni '90</option><option value="2000">Anni 2000</option>
-        <option value="2010">Anni 2010</option><option value="2020">Anni 2020</option>
-      </select>
+	  <input id="ansDecade" type="number" inputmode="numeric" min="1900" max="2030" class="input-field" placeholder="Anno o decennio (es. 1980)">
       <button class="btn btn-primary" onclick="sendPlayer('SUBMIT_LIVE_ANSWER', { artist: ansArtist.value, title: ansTitle.value, decade: ansDecade.value })">Invia Risposta</button>
     `;
   }

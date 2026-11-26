@@ -163,7 +163,8 @@ public class GameEngineService {
                 .findFirst()
                 .orElse(null);
         if (chosen == null) return;
-
+        
+        chosen = musicService.enrichTrackData(chosen);
         room.setCurrentOrganizerId(organizer.getId());
         room.setCurrentLiveTrack(chosen);
         room.getLiveBets().clear();
@@ -362,6 +363,7 @@ public class GameEngineService {
         room.setLastAwardSummary(Map.of(
                 "artist", track.artist(),
                 "title", track.title(),
+                "coverUrl", track.coverUrl(),
                 "ownerName", owner != null ? owner.getName() : "",
                 "results", playerResults
         ));
@@ -411,6 +413,7 @@ public class GameEngineService {
                             "ownerName", w.getName(),
                             "artist", track != null ? track.artist() : "",
                             "title", track != null ? track.title() : "",
+                            "coverUrl", track != null ? track.coverUrl() : "",
                             "votes", maxVotes,
                             "prize", prize
                     ));

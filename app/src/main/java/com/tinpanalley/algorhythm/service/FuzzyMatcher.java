@@ -27,8 +27,23 @@ public class FuzzyMatcher {
 
     public boolean matchesDecade(String guessDecade, String actualDecade) {
         if (guessDecade == null || actualDecade == null) return false;
-        return guessDecade.trim().equals(actualDecade.trim());
+        String clean = guessDecade.trim().replaceAll("[^0-9]", "");
+        if (clean.isEmpty()) return false;
+
+        try {
+            int val = Integer.parseInt(clean);
+            // Se scrive solo due cifre (es. "80" o "84"), lo convertiamo in 1980 / 1984 (o 2000+ se < 30)
+            if (val < 100) {
+                val += (val <= 30) ? 2000 : 1900;
+            }
+            int guessDec = (val / 10) * 10;
+            int actualDec = Integer.parseInt(actualDecade.trim());
+            return guessDec == actualDec;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
+
 
     private String normalize(String input) {
         String s = input.trim().toLowerCase();
